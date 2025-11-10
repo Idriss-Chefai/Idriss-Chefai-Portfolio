@@ -4,10 +4,10 @@ import './Header.css'
 
 const Header = () => {
   const socialLinks = [
-    { icon: FaGithub, url: 'https://github.com/yourusername', label: 'GitHub' },
-    { icon: FaLinkedin, url: 'https://linkedin.com/in/yourusername', label: 'LinkedIn' },
-    { icon: FaYoutube, url: 'https://youtube.com/@yourusername', label: 'YouTube' },
-    { icon: FaInstagram, url: 'https://instagram.com/yourusername', label: 'Instagram' },
+    { icon: FaGithub, url: 'https://github.com/Idriss-Chefai', label: 'GitHub' },
+    { icon: FaLinkedin, url: 'https://www.linkedin.com/in/idriss-chefai/', label: 'LinkedIn' },
+    { icon: FaYoutube, url: 'https://youtube.com', label: 'YouTube' },
+    { icon: FaInstagram, url: 'https://www.instagram.com/_idriss_c_/', label: 'Instagram' },
   ]
 
   return (
@@ -18,14 +18,14 @@ const Header = () => {
           <div className="stat-card">
             <div className="stat-icon">🎮</div>
             <div className="stat-content">
-              <div className="stat-value">5+</div>
+              <div className="stat-value">2+</div>
               <div className="stat-label">Game Projects</div>
             </div>
           </div>
           <div className="stat-card">
             <div className="stat-icon">💻</div>
             <div className="stat-content">
-              <div className="stat-value">10+</div>
+              <div className="stat-value">6+</div>
               <div className="stat-label">Web Projects</div>
             </div>
           </div>
@@ -39,7 +39,7 @@ const Header = () => {
           <div className="stat-card">
             <div className="stat-icon">⚡</div>
             <div className="stat-content">
-              <div className="stat-value">50+</div>
+              <div className="stat-value">20+</div>
               <div className="stat-label">Technologies</div>
             </div>
           </div>
@@ -54,7 +54,7 @@ const Header = () => {
           <div className="profile-image-wrapper">
             <div className="profile-glow"></div>
             <img 
-              src="/profile.jpg" 
+              src="/professional img.jpeg" 
               alt="Idriss Chefai" 
               className="profile-image"
               onError={(e) => {
@@ -79,7 +79,7 @@ const Header = () => {
           </div>
           
           <p className="description">
-            I build immersive games and scalable applications. From interactive gameplay mechanics to robust backends—I turn concepts into working products. No fluff, just code that matters.
+            I build immersive games and scalable applications. From interactive gameplay mechanics to robust backends—I turn concepts into working products.
           </p>
           
           

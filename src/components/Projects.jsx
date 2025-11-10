@@ -61,6 +61,18 @@ const Projects = ({ onProjectClick }) => {
       demoVideo: null,
       screenshots: [],
       icon: '🤖'
+    },
+    {
+      id: 6,
+      title: 'Gestion Maintenance - Asset Management System',
+      category: 'software',
+      description: 'A comprehensive maintenance and asset management software built with Java. Manage equipment, track maintenance schedules, generate reports, and optimize operational efficiency.',
+      fullDescription: 'Gestion Maintenance is a full-featured asset and maintenance management software application built with Java. The system allows organizations to efficiently manage equipment inventory, track maintenance schedules and history, generate comprehensive reports, manage work orders, and optimize maintenance operations. Features include real-time status monitoring, preventive maintenance planning, failure tracking, and performance analytics. The application uses a relational database for robust data management and provides an intuitive user interface for administrators and technicians.',
+      technologies: ['Java', 'Swing/JavaFX', 'MySQL', 'JDBC', 'Maven'],
+      demoVideo: null,
+      screenshots: [],
+      icon: '🔧',
+      period: 'School Project'
     }
   ]
 
@@ -70,6 +82,7 @@ const Projects = ({ onProjectClick }) => {
     { id: 'web', name: 'Web', icon: '🌐' },
     { id: 'mobile', name: 'Mobile', icon: '📱' },
     { id: 'ai', name: 'AI', icon: '🤖' },
+    { id: 'software', name: 'Software', icon: '🔧' },
     { id: '3d', name: '3D', icon: '🎨' }
   ]
 
