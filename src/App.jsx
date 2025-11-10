@@ -1,21 +1,21 @@
 import React, { useState } from 'react'
-import Navigation from './components/Navigation'
 import Particles from './components/Particles'
-import Header from './components/Header'
-import Skills from './components/Skills'
-import Experience from './components/Experience'
-import Projects from './components/Projects'
-import Education from './components/Education'
-import Contact from './components/Contact'
+import PointerTrail from './components/PointerTrail'
+import Desktop from './components/Desktop'
 import ProjectModal from './components/ProjectModal'
+import LoadingScreen from './components/LoadingScreen'
 import './App.css'
 
 function App() {
+  // selectedProject state is kept here so the existing ProjectModal works
   const [selectedProject, setSelectedProject] = useState(null)
+  const [showLoading, setShowLoading] = useState(true)
 
   return (
     <div className="app">
-      <Navigation />
+      {showLoading && <LoadingScreen onLoadComplete={() => setShowLoading(false)} />}
+      
+      <PointerTrail />
       <Particles />
       <div className="background-effects">
         <div className="particle"></div>
@@ -24,14 +24,10 @@ function App() {
         <div className="particle"></div>
         <div className="particle"></div>
       </div>
-      
-      <Header />
-      <Skills />
-      <Experience />
-      <Projects onProjectClick={setSelectedProject} />
-      <Education />
-      <Contact />
-      
+
+      {/* Desktop-style UI: icons and draggable windows */}
+      <Desktop onOpenProject={setSelectedProject} />
+
       {selectedProject && (
         <ProjectModal 
           project={selectedProject} 
@@ -43,4 +39,3 @@ function App() {
 }
 
 export default App
-

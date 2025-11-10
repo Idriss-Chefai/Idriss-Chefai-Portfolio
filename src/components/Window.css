@@ -1,0 +1,128 @@
+.window {
+  position: absolute;
+  background: linear-gradient(180deg, rgba(12,18,28,0.92), rgba(8,14,22,0.92));
+  color: #e6eef8;
+  border-radius: 6px;
+  width: 600px;
+  height: 420px;
+  top: 80px;
+  left: 80px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  resize: both;
+  min-width: 260px;
+  min-height: 120px;
+  box-sizing: border-box;
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px);
+}
+
+/* Visible resize handle */
+.window-resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  cursor: nwse-resize;
+  background: linear-gradient(135deg, transparent 50%, rgba(34, 197, 94, 0.6) 50%);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  z-index: 1000;
+}
+
+.window-resize-handle:hover {
+  opacity: 1;
+}
+
+.window-header {
+  height: 38px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  cursor: grab;
+  user-select: none;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.window-header:active { cursor: grabbing; }
+
+.window-title { font-weight: 600; font-size: 14px; color: #e6eef8; }
+
+.window-controls { display: flex; gap: 6px; }
+.win-btn { background: transparent; border: none; cursor: pointer; font-size: 13px; padding: 4px 8px; color: #dbe9ff }
+.win-btn.close { color: #ff7b7b; font-weight: 700 }
+
+.window-content { background: transparent; padding: 12px; color: #e6eef8 }
+
+.window[style*="z-index"] {
+  z-index: 999;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .window {
+    border-radius: 4px;
+    min-width: 200px;
+    min-height: 100px;
+  }
+
+  .window-resize-handle {
+    width: 28px;
+    height: 28px;
+  }
+
+  .window-header {
+    height: 36px;
+    padding: 0 6px;
+  }
+
+  .window-title {
+    font-size: 12px;
+  }
+
+  .win-btn {
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+
+  .window-content {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .window {
+    min-width: 160px;
+    border-radius: 3px;
+  }
+
+  .window-resize-handle {
+    width: 32px;
+    height: 32px;
+    opacity: 0.7;
+  }
+
+  .window-header {
+    height: 32px;
+  }
+
+  .window-title {
+    font-size: 11px;
+  }
+
+  .win-btn {
+    font-size: 11px;
+    padding: 2px 4px;
+  }
+
+  .window-content {
+    padding: 8px;
+    font-size: 13px;
+  }
+}
+

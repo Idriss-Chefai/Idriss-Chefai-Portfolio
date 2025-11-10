@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Skills.css'
 
 const Skills = () => {
+  const [expandedCategory, setExpandedCategory] = useState(null)
+
   const skillCategories = [
     {
       title: 'Languages',
@@ -104,6 +106,10 @@ const Skills = () => {
     }
   ]
 
+  const toggleCategory = (index) => {
+    setExpandedCategory(expandedCategory === index ? null : index)
+  }
+
   return (
     <section id="skills" className="skills-section">
       <h2 className="section-title">Technical Arsenal</h2>
@@ -111,40 +117,58 @@ const Skills = () => {
         {skillCategories.map((category, index) => (
           <div 
             key={index} 
-            className="skill-category"
+            className={`skill-category ${expandedCategory === index ? 'expanded' : 'collapsed'}`}
             style={{ '--category-color': category.color }}
+            onClick={() => toggleCategory(index)}
           >
             <div className="category-header">
               <span className="category-icon">{category.icon}</span>
               <h3 className="category-title">{category.title}</h3>
+              <span className="expand-toggle">{expandedCategory === index ? '▼' : '▶'}</span>
             </div>
-            <div className="skills-list">
-              {category.skills.map((skill, skillIndex) => {
-                const skillName = typeof skill === 'string' ? skill : skill.name
-                const skillLevel = typeof skill === 'object' ? skill.level : 75
-                return (
-                  <div 
-                    key={skillIndex} 
-                    className="skill-item"
-                    style={{ animationDelay: `${skillIndex * 0.1}s` }}
-                  >
-                    <div className="skill-header">
-                      <span className="skill-name">{skillName}</span>
-                      <span className="skill-percentage">{skillLevel}%</span>
+            
+            {expandedCategory === index && (
+              <div className="skills-list">
+                {category.skills.map((skill, skillIndex) => {
+                  const skillName = typeof skill === 'string' ? skill : skill.name
+                  const skillLevel = typeof skill === 'object' ? skill.level : 75
+                  return (
+                    <div 
+                      key={skillIndex} 
+                      className="skill-item"
+                      style={{ animationDelay: `${skillIndex * 0.05}s` }}
+                    >
+                      <div className="skill-header">
+                        <span className="skill-name">{skillName}</span>
+                        <span className="skill-percentage">{skillLevel}%</span>
+                      </div>
+                      <div className="skill-progress-bar">
+                        <div 
+                          className="skill-progress-fill"
+                          style={{ 
+                            width: `${skillLevel}%`,
+                            '--category-color': category.color
+                          }}
+                        ></div>
+                      </div>
                     </div>
-                    <div className="skill-progress-bar">
-                      <div 
-                        className="skill-progress-fill"
-                        style={{ 
-                          width: `${skillLevel}%`,
-                          '--category-color': category.color
-                        }}
-                      ></div>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
+                  )
+                })}
+              </div>
+            )}
+
+            {expandedCategory !== index && (
+              <div className="skills-preview">
+                <div className="skill-badges">
+                  {category.skills.slice(0, 3).map((skill, idx) => (
+                    <span key={idx} className="skill-badge">{typeof skill === 'string' ? skill : skill.name}</span>
+                  ))}
+                  {category.skills.length > 3 && (
+                    <span className="skill-badge more">+{category.skills.length - 3}</span>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -153,4 +177,5 @@ const Skills = () => {
 }
 
 export default Skills
+
 

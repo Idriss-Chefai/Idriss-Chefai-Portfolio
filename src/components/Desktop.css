@@ -1,0 +1,192 @@
+.desktop-root {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(180deg, #071029 0%, #071a2b 60%);
+  overflow: visible;
+}
+
+/* Header as fullscreen background */
+.desktop-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.desktop-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 18px;
+  width: 160px;
+  position: relative;
+  z-index: 10;
+}
+
+.desktop-icon {
+  width: 120px;
+  color: #fff;
+  text-align: center;
+  cursor: default;
+  user-select: none;
+}
+
+.desktop-icon:hover {
+  transform: translateY(-3px);
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="2" y="24" font-size="24" font-weight="bold">🎮</text></svg>') 0 0, auto;
+}
+
+.desktop-icon-emoji {
+  font-size: 40px;
+  background: rgba(255,255,255,0.06);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.desktop-icon-title {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+
+/* gaming-style loader that follows the cursor while opening */
+.desktop-gaming-loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  pointer-events: none;
+  transform: translate(-9999px, -9999px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.desktop-gaming-loader::before {
+  content: '';
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.12);
+  border-top-color: #7c3aed; /* purple accent */
+  animation: rpm 0.9s linear infinite;
+}
+.desktop-gaming-loader::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle at 30% 30%, #fff 0%, rgba(255,255,255,0.12) 60%);
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(6px, 6px);
+  animation: pulse 0.9s ease-in-out infinite;
+}
+
+@keyframes rpm {
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse {
+  0%,100% { opacity: 0.9; transform: translate(6px, 6px) scale(1); }
+  50% { opacity: 0.4; transform: translate(6px, 6px) scale(0.8); }
+}
+
+/* Simple drop shadow for windows placed on desktop. Keep windows absolutely positioned
+   (the Window component sets position:absolute); don't override position here. */
+.desktop-root .window {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  z-index: 100;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .desktop-root {
+    height: 100vh;
+  }
+
+  .desktop-icons {
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px;
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-height: 110px;
+    background: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+  }
+
+  .desktop-icon {
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  .desktop-icon-emoji {
+    font-size: 24px;
+    padding: 6px;
+  }
+
+  .desktop-icon-title {
+    font-size: 10px;
+    margin-top: 4px;
+  }
+
+  .desktop-background {
+    height: calc(100vh - 110px);
+  }
+}
+
+/* Force no scrolling on smallest phones: pack icons tightly, reduce sizes */
+@media (max-width: 375px) {
+  .desktop-icons {
+    max-height: 70px;
+    padding: 6px 4px;
+    gap: 4px;
+    justify-content: space-around;
+    overflow: hidden;
+  }
+  .desktop-icon {
+    width: 50px;
+    flex-shrink: 1;
+    flex-grow: 1;
+    max-width: 60px;
+  }
+  .desktop-icon-emoji { font-size: 16px; padding: 3px }
+  .desktop-icon-title { font-size: 7px; margin-top: 1px }
+  .desktop-background {
+    height: calc(100vh - 70px);
+  }
+}
+
+@media (max-width: 480px) {
+  .desktop-icons {
+    max-height: 90px;
+  }
+
+  .desktop-icon {
+    width: 70px;
+  }
+
+  .desktop-icon-emoji {
+    font-size: 24px;
+    padding: 6px;
+  }
+
+  .desktop-icon-title {
+    font-size: 9px;
+  }
+
+  .desktop-background {
+    height: calc(100vh - 90px);
+  }
+}
+

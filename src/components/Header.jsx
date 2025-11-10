@@ -12,7 +12,44 @@ const Header = () => {
 
   return (
     <header id="header" className="header">
+      {/* widgets: moved outside the centered container so they sit on the right edge */}
+      <div className="stats-widgets">
+        <div className="stats-grid">
+          <div className="stat-card">
+            <div className="stat-icon">🎮</div>
+            <div className="stat-content">
+              <div className="stat-value">5+</div>
+              <div className="stat-label">Game Projects</div>
+            </div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon">💻</div>
+            <div className="stat-content">
+              <div className="stat-value">10+</div>
+              <div className="stat-label">Web Projects</div>
+            </div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon">🏆</div>
+            <div className="stat-content">
+              <div className="stat-value">3+</div>
+              <div className="stat-label">Years Experience</div>
+            </div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon">⚡</div>
+            <div className="stat-content">
+              <div className="stat-value">50+</div>
+              <div className="stat-label">Technologies</div>
+            </div>
+          </div>
+        </div>
+
+        {/* link widgets removed per user request; social links remain in the profile area */}
+      </div>
       <div className="header-container">
+        <div className="welcome-text">Welcome to</div>
+        
         <div className="profile-section">
           <div className="profile-image-wrapper">
             <div className="profile-glow"></div>
@@ -42,42 +79,10 @@ const Header = () => {
           </div>
           
           <p className="description">
-            Passionate game developer and software engineer crafting immersive digital experiences. 
-            I love bringing creative ideas to life through code, whether it's building engaging games, 
-            developing robust web applications, or exploring the frontiers of AI and mobile development. 
-            Always learning, always creating, always leveling up! 🚀
+            I build immersive games and scalable applications. From interactive gameplay mechanics to robust backends—I turn concepts into working products. No fluff, just code that matters.
           </p>
           
-          <div className="stats-grid">
-            <div className="stat-card">
-              <div className="stat-icon">🎮</div>
-              <div className="stat-content">
-                <div className="stat-value">5+</div>
-                <div className="stat-label">Game Projects</div>
-              </div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-icon">💻</div>
-              <div className="stat-content">
-                <div className="stat-value">10+</div>
-                <div className="stat-label">Web Projects</div>
-              </div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-icon">🏆</div>
-              <div className="stat-content">
-                <div className="stat-value">3+</div>
-                <div className="stat-label">Years Experience</div>
-              </div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-icon">⚡</div>
-              <div className="stat-content">
-                <div className="stat-value">50+</div>
-                <div className="stat-label">Technologies</div>
-              </div>
-            </div>
-          </div>
+          
           
           <div className="social-links">
             {socialLinks.map((link, index) => {
