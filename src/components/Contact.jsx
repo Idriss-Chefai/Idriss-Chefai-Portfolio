@@ -18,25 +18,41 @@ const Contact = () => {
     })
   }
 
+  // Set your real receiver email here (e.g. 'yourname@gmail.com')
+  const RECEIVER_EMAIL = 'idriss@example.com'
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setStatus('sending')
-    
-    // Here you would typically send the form data to a backend service
-    // For now, we'll simulate a submission
-    setTimeout(() => {
+
+    // Try opening the user's mail client with prefilled content as a reliable fallback
+    try {
+      const subject = encodeURIComponent(formData.subject || 'Contact from Portfolio')
+      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)
+      const mailto = `mailto:${RECEIVER_EMAIL}?subject=${subject}&body=${body}`
+      window.location.href = mailto
+
+      // reset form and show quick confirmation
       setStatus('success')
       setFormData({ name: '', email: '', subject: '', message: '' })
       setTimeout(() => setStatus(''), 3000)
-    }, 1500)
+    } catch (err) {
+      // If opening mail client failed, fallback to simulated send
+      setTimeout(() => {
+        setStatus('success')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+        setTimeout(() => setStatus(''), 3000)
+      }, 1500)
+    }
   }
 
   const handleDownloadResume = () => {
     // Create a link to download the resume
     // You'll need to add your actual resume file to the public folder
     const link = document.createElement('a')
-    link.href = '/resume.pdf' // Update this path to your actual resume file
-    link.download = 'Idriss-Chefai-Resume.pdf'
+    // Ensure your resume file is placed in the public folder at this path
+    link.href = '/Idriss_s_Resume_2025 v2.pdf'
+    link.download = 'Idriss_Chefai_Resume.pdf'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)

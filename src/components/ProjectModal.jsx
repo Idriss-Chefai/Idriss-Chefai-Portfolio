@@ -5,6 +5,28 @@ import './ProjectModal.css'
 const ProjectModal = ({ project, onClose }) => {
   if (!project) return null
 
+  // Convert Google Drive share URLs to embeddable preview URLs
+  const getEmbedUrl = (url) => {
+    if (!url) return null
+    try {
+      // If already an iframe-friendly url (youtube, vimeo, etc.) return as is
+      if (url.includes('youtube.com') || url.includes('youtube-nocookie.com') || url.includes('vimeo.com')) return url
+
+      // Google Drive sharing links can look like:
+      // https://drive.google.com/file/d/FILE_ID/view?usp=sharing
+      // or https://drive.google.com/open?id=FILE_ID
+      const driveFileMatch = url.match(/(?:file\/d\/|open\?id=)([a-zA-Z0-9_-]{10,})/)
+      if (driveFileMatch && driveFileMatch[1]) {
+        return `https://drive.google.com/file/d/${driveFileMatch[1]}/preview`
+      }
+
+      // Fallback: return the original URL
+      return url
+    } catch (e) {
+      return url
+    }
+  }
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -32,7 +54,7 @@ const ProjectModal = ({ project, onClose }) => {
               <h3 className="section-heading">Demo Video</h3>
               <div className="video-container">
                 <iframe
-                  src={project.demoVideo}
+                  src={getEmbedUrl(project.demoVideo)}
                   title={`${project.title} Demo`}
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -52,6 +74,11 @@ const ProjectModal = ({ project, onClose }) => {
                     src={screenshot}
                     alt={`${project.title} Screenshot ${index + 1}`}
                     className="screenshot"
+                    onError={(e) => {
+                      // fallback to a simple SVG placeholder matching theme
+                      e.target.onerror = null
+                      e.target.src = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450"><rect width="100%" height="100%" fill="%23050510"/><g fill="%2322c55e" font-family="Arial,Helvetica,sans-serif" font-size="24"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">${project.title} — Screenshot</text></g></svg>`)}`
+                    }}
                   />
                 ))}
               </div>
