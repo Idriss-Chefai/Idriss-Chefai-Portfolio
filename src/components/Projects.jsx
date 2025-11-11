@@ -14,8 +14,10 @@ const Projects = ({ onProjectClick }) => {
       technologies: ['Java', 'JavaFX', 'Maven'],
       demoVideo: null, // If you have a Google Drive share link put it here (will be auto-converted to preview)
       screenshots: [
-        '/assets/projects/2d-puzzle-1.png',
-        '/assets/projects/2d-puzzle-2.png'
+        '/assets/adventure_game/1.png',
+        '/assets/adventure_game/2.png',
+        '/assets/adventure_game/3.png',
+        '/assets/adventure_game/4.png'
       ],
       icon: '🎮'
     },
@@ -26,8 +28,8 @@ const Projects = ({ onProjectClick }) => {
       description: 'Collaborated on a platform with two backends (Java and Symfony) sharing one MySQL database. Features included campsite discovery, reservations, reviews, a gear store, social features, and gamification.',
       fullDescription: 'A full-stack platform for camping and outdoor adventures. This collaborative project features a unique dual-backend architecture using Java and Symfony, both connected to a shared MySQL database. The platform includes campsite discovery and booking, user reviews, an integrated gear store, social networking features, and gamification elements to enhance user engagement.',
       technologies: ['JavaFX', 'Java', 'Symfony', 'MySQL'],
-      demoVideo: null,
-      screenshots: ['/assets/projects/camping-1.png', '/assets/projects/camping-2.png'],
+      demoVideo: "https://drive.google.com/file/d/1mj54WLUylubDGtH2HKPibh8MUdFJANM4/view?usp=sharing",
+      screenshots: [],
       icon: '🏕️',
       period: 'Feb 2025 - Mar 2025'
     },
@@ -39,7 +41,7 @@ const Projects = ({ onProjectClick }) => {
       fullDescription: 'A complete e-commerce solution for electronics built with the MERN stack. Features include user authentication using JWT tokens, product catalog with search and filtering, shopping cart functionality, secure checkout process, order management, and admin dashboard for product and order management.',
       technologies: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'JWT'],
       demoVideo: null,
-      screenshots: ['/assets/projects/ecomm-1.png', '/assets/projects/ecomm-2.png'],
+      screenshots: [],
       icon: '🛒',
       period: 'Aug 2023 - Sep 2023'
     },
@@ -50,8 +52,8 @@ const Projects = ({ onProjectClick }) => {
       description: 'A React Native mobile application for diabetes tracking with management features for doctors, appointments, and patient profiles.',
       fullDescription: 'Dia-track is a comprehensive mobile application developed with React Native for diabetes management. The app allows patients to track their blood sugar levels, medications, and meals. It includes features for doctors to manage patient profiles, schedule appointments, and monitor patient progress. Built with a Node.js/Express backend and MySQL database.',
       technologies: ['React Native', 'Node.js', 'Express', 'MySQL'],
-      demoVideo: null,
-      screenshots: ['/assets/projects/dia-track-1.png', '/assets/projects/dia-track-2.png'],
+      demoVideo: "https://drive.google.com/file/d/1nlQ3CdGFS0zt7D07lCTblcwiJ3nQs2XU/view?usp=sharing",
+      screenshots: [],
       icon: '📱'
     },
     {
@@ -62,7 +64,11 @@ const Projects = ({ onProjectClick }) => {
       fullDescription: 'A comprehensive data science project involving stock market analysis using Python. The project includes data collection, preprocessing, feature engineering, and model training using scikit-learn and TensorFlow. The trained model was deployed with a user-friendly Angular frontend and Flask REST API backend, allowing users to input stock data and receive predictions.',
       technologies: ['Python', 'scikit-learn', 'TensorFlow', 'Angular', 'Flask', 'Pandas', 'NumPy'],
       demoVideo: null,
-      screenshots: ['/assets/projects/stock-1.png', '/assets/projects/stock-2.png'],
+      screenshots: ['/assets/stock_market_analysis/1.png',
+         '/assets/stock_market_analysis/2.png',
+         '/assets/stock_market_analysis/3.png',
+         '/assets/stock_market_analysis/4.png'
+        ],
       icon: '🤖'
     },
     {
@@ -73,7 +79,14 @@ const Projects = ({ onProjectClick }) => {
       fullDescription: 'Gestion Maintenance is a full-featured asset and maintenance management software application built with Java. The system allows organizations to efficiently manage equipment inventory, track maintenance schedules and history, generate comprehensive reports, manage work orders, and optimize maintenance operations. Features include real-time status monitoring, preventive maintenance planning, failure tracking, and performance analytics. The application uses a relational database for robust data management and provides an intuitive user interface for administrators and technicians.',
       technologies: ['Java', 'Swing/JavaFX', 'MySQL', 'JDBC', 'Maven'],
       demoVideo: null,
-      screenshots: ['/assets/projects/gestion-1.png', '/assets/projects/gestion-2.png'],
+      screenshots: ['assets/gestion_maintenance/1.png',
+        'assets/gestion_maintenance/1.png',
+        'assets/gestion_maintenance/2.png',
+        'assets/gestion_maintenance/3.png',
+        'assets/gestion_maintenance/4.png',
+        'assets/gestion_maintenance/5.png',
+        'assets/gestion_maintenance/6.png'
+      ],
       icon: '🔧',
       period: 'School Project'
     }
