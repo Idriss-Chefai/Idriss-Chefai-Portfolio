@@ -7,6 +7,7 @@ import Experience from './Experience'
 import Projects from './Projects'
 import Education from './Education'
 import Contact from './Contact'
+import Terminal from './Terminal'
 
 let idCounter = 1
 
@@ -15,7 +16,8 @@ const ICONS = [
   { key: 'skills', title: 'Skills', icon: '🛠️' },
   { key: 'experience', title: 'Experience', icon: '💼' },
   { key: 'education', title: 'Education', icon: '🎓' },
-  { key: 'contact', title: 'Contact', icon: '✉️' }
+  { key: 'contact', title: 'Contact', icon: '✉️' },
+  { key: 'terminal', title: 'Terminal', icon: '⌨️' }
 ]
 
 export default function Desktop({ onOpenProject }) {
@@ -32,7 +34,8 @@ export default function Desktop({ onOpenProject }) {
     skills: { width: 640, height: 420 },
     experience: { width: 760, height: 480 },
     education: { width: 640, height: 420 },
-    contact: { width: 520, height: 360 }
+    contact: { width: 520, height: 360 },
+    terminal: { width: 800, height: 500 }
   }
 
   const createGamingLoader = () => {
@@ -212,6 +215,8 @@ export default function Desktop({ onOpenProject }) {
         return <Education />
       case 'contact':
         return <Contact />
+      case 'terminal':
+        return <Terminal />
       default:
         return <div style={{ padding: 16 }}>Unknown: {key}</div>
     }

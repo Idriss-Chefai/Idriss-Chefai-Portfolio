@@ -26,6 +26,7 @@
 
 html {
   scroll-behavior: smooth;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><style>.hand{fill:%2322c55e;stroke:%233b82f6;stroke-width:1.5;}</style><g class="hand"><path d="M6 10 L8 2 L10 8 L14 6 L12 12 L16 14 L10 16 L12 22 L8 20 L6 26 L4 18 Z"/></g></svg>') 4 0, auto;
 }
 
 body {
@@ -140,3 +141,14 @@ body::before {
   }
 }
 
+/* Toony cursor for buttons and clickables */
+button,
+a,
+input[type="button"],
+input[type="submit"],
+.desktop-icon,
+.skill-category,
+.window-header,
+[role="button"] {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><style>.point{fill:%2322c55e;}</style><circle cx="8" cy="8" r="3.5" class="point"/><path d="M 10 6 L 28 6 L 28 28 Q 14 28 10 22" fill="none" stroke="%2322c55e" stroke-width="1.5" stroke-linecap="round"/></svg>') 4 0, pointer;
+}

@@ -48,7 +48,7 @@ const Header = () => {
         {/* link widgets removed per user request; social links remain in the profile area */}
       </div>
       <div className="header-container">
-        <div className="welcome-text">Welcome to</div>
+        <div className="welcome-text">Welcome</div>
         
         <div className="profile-section">
           <div className="profile-image-wrapper">
