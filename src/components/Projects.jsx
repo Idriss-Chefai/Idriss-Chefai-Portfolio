@@ -5,8 +5,18 @@ const Projects = ({ onProjectClick }) => {
   const [activeCategory, setActiveCategory] = useState('all')
 
   const projects = [
+        { id: 1,
+      title: 'Protect The White House',
+      category: 'gamedev',
+      description: 'Unity tower defense game in zombie apocalypse setting. Manage resources like fuel and wood to build defenses against multiple zombie types across 8 levels. Features resource management, cooldown systems, and card-based UI.',
+      technologies: ['C#', 'Unity', 'Blender'],
+      "fullDescription":"A Unity-based tower defense game set in a zombie apocalypse where players manage resources like fuel and wood to build defensive stations and turrets. Features multiple zombie types with different behaviors, 8 challenging levels, resource management mechanics, cooldown systems for building placement, and card-based UI with building selection. Built with Unity/C# and 3D assets created in Blender, featuring cartoony visual style and scalable gameplay mechanics. Developed as part of game development coursework, emphasizing meaningful early-game defense and progression systems.",
+      demoVideo: "https://drive.google.com/file/d/1uDiRH4Zy1p41Wrlm_5l-ctf8cMLgBN7H/view?usp=sharing", // If you have a Google Drive share link put it here (will be auto-converted to preview)
+      screenshots: [],
+      icon: '🎮'
+    },
     {
-      id: 1,
+      id: 2,
       title: '2D Puzzle Adventure Game',
       category: 'gamedev',
       description: 'Created a multi-level 2D puzzle game with interactive gameplay and smooth animations. Features include challenging puzzles, character movement, and engaging game mechanics.',
@@ -22,7 +32,7 @@ const Projects = ({ onProjectClick }) => {
       icon: '🎮'
     },
     {
-      id: 2,
+      id: 3,
       title: 'Camping & Outdoor Adventures Platform',
       category: 'web',
       description: 'Collaborated on a platform with two backends (Java and Symfony) sharing one MySQL database. Features included campsite discovery, reservations, reviews, a gear store, social features, and gamification.',
@@ -34,7 +44,7 @@ const Projects = ({ onProjectClick }) => {
       period: 'Feb 2025 - Mar 2025'
     },
     {
-      id: 3,
+      id: 4,
       title: 'E-Commerce Website',
       category: 'web',
       description: 'Built an electronics e-commerce site with JWT-based user authentication, product catalog, shopping cart, and secure payment integration.',
@@ -46,7 +56,7 @@ const Projects = ({ onProjectClick }) => {
       period: 'Aug 2023 - Sep 2023'
     },
     {
-      id: 4,
+      id: 5,
       title: 'Dia-track - Diabetes Tracking App',
       category: 'mobile',
       description: 'A React Native mobile application for diabetes tracking with management features for doctors, appointments, and patient profiles.',
@@ -57,7 +67,7 @@ const Projects = ({ onProjectClick }) => {
       icon: '📱'
     },
     {
-      id: 5,
+      id: 6,
       title: 'Stock Market Analysis ML Model',
       category: 'ai',
       description: 'A Python machine learning model for stock market analysis with deployment using Angular frontend and Flask backend.',
@@ -72,7 +82,7 @@ const Projects = ({ onProjectClick }) => {
       icon: '🤖'
     },
     {
-      id: 6,
+      id: 7,
       title: 'Gestion Maintenance - Asset Management System',
       category: 'software',
       description: 'A comprehensive maintenance and asset management software built with Java. Manage equipment, track maintenance schedules, generate reports, and optimize operational efficiency.',
