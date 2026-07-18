@@ -1,0 +1,92 @@
+import { TimelineItem } from "./data-types";
+
+export const TIMELINE: TimelineItem[] = [
+  {
+    role: "Software Engineering Intern",
+    org: "STEG (Tunisian Electricity & Gas Company)",
+    location: "Tunis, Tunisia",
+    period: "Jul 2025 – Sep 2025",
+    type: "intern",
+    highlights: [
+      "Digitized internal workflows using Jotform — dynamic forms, conditional logic, approval flows",
+      "Integrated form data with SQL services",
+      "Added custom JavaScript widgets",
+    ],
+    tech: ["Jotform", "SQL", "JavaScript"],
+  },
+  {
+    role: "Freelance Software Engineer",
+    org: "Self-Employed",
+    location: "Remote / Tunis, Tunisia",
+    period: "Feb 2025 – Jun 2025",
+    type: "intern", 
+    highlights: [
+      "Built multi-platform mobile application instances tailored to academic record lookups using FlutterFlow and Firebase",
+      "Engineered tailored desktop client software providing practical administrative toolsets for student cohorts via JavaFX",
+      "Constructed structural UI layers using MVC architectures separating view components from DB queries",
+    ],
+    tech: ["FlutterFlow", "Firebase", "JavaFX", "Java", "MySQL"],
+  },
+  {
+    role: "Software Engineering Intern",
+    org: "Elite Council Consulting",
+    location: "Tunis, Tunisia",
+    period: "Oct 2024 – Dec 2024",
+    type: "intern",
+    highlights: [
+      "Built Dia-track, a React Native app for diabetes tracking",
+      "Added management features for doctors, appointments, and patient profiles",
+      "Backend built with Node.js, Express, and MySQL",
+    ],
+    tech: ["React Native", "Node.js", "Express", "MySQL"],
+  },
+  {
+    role: "Software Engineering",
+    org: "ESPRIT",
+    location: "Ariana, Tunisia",
+    period: "Sep 2024 – Present",
+    type: "edu",
+    current: true,
+    highlights: ["Engineering degree in Software Engineering"],
+  },
+  {
+    role: "Data Science Intern",
+    org: "NA Soft",
+    location: "Centre Urbain Nord, Tunisia",
+    period: "Feb 2024 – May 2024",
+    type: "intern",
+    highlights: [
+      "Performed stock market analysis and built a Python ML model",
+      "Deployed the model with an Angular frontend and Flask backend",
+    ],
+    tech: ["Python", "scikit-learn", "TensorFlow", "Angular", "Flask"],
+  },
+  {
+    role: "Software Engineering Intern",
+    org: "CERTE",
+    location: "Soliman, Tunisia",
+    period: "Jun 2023 – Sep 2023",
+    type: "intern",
+    highlights: [
+      "Built equipment management software in Java with MySQL",
+      "Designed the database schema and optimized data storage",
+    ],
+    tech: ["Java", "MySQL", "Git"],
+  },
+  {
+    role: "Bachelor in Computer Science",
+    org: "ISTIC",
+    location: "Soliman, Tunisia",
+    period: "Sep 2021 – May 2024",
+    type: "edu",
+    highlights: ["Bachelor's degree in Computer Science"],
+  },
+  {
+    role: "Baccalaureate in Computer Science",
+    org: "High School of Borj Cedria",
+    location: "Borj Cedria, Tunisia",
+    period: "Sep 2018 – Jan 2021",
+    type: "edu",
+    highlights: ["Baccalaureate specializing in Computer Science"],
+  },
+];

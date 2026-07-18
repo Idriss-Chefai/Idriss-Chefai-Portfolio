@@ -1,117 +1,42 @@
-# Idriss Chefai - Portfolio Website
+# Idriss Chefai - Portfolio Matrix
 
-A modern, gamified portfolio website showcasing my work as a Game Developer and Software Engineer.
+A high-fidelity, interactive bento-grid ecosystem engineered to showcase specialized architectures in 3D interactive systems, game mechanics, and advanced full-stack application development.
 
-## Features
+---
 
-- 🎮 **Gamified Design** - Creative, game-inspired UI with animations and effects
-- 📱 **Fully Responsive** - Works seamlessly on all devices
-- 🎨 **Modern UI/UX** - Beautiful, colorful, and professional design
-- 🚀 **Fast Performance** - Built with React and Vite for optimal speed
-- 📂 **Project Showcase** - Interactive project cards with detailed modals
-- 📧 **Contact Form** - Easy way for visitors to reach out
-- 📄 **Resume Download** - Direct download link for my resume
+## 🦾 Core Highlights
 
-## Tech Stack
+-  **Gamified Bento Layout** – A structurally scannable, multi-column bento environment prioritizing visual clarity and smooth interactive states.
+-  **Warm Obsidian Aesthetics** – A custom, low-fatigue visual system utilizing deep velvet-basalt canvases, desaturated sage-grey typographies, and sharp sunset-gold accents.
+-  **Asynchronous Terminal Sequence** – An integrated boot-up simulation sequence streaming pipeline diagnostics prior to initialization.
+-  **Adaptive Project Grid** – Multi-category matrix showcasing runtime engineering execution across Web, Mobile, Software, AI, and Game Engines.
+-  **Academic Sub-system** – Direct modular framework for viewing compiled technical reports and LaTeX manuscripts inside responsive document viewers.
 
-- React 18
-- Vite
-- React Icons
-- CSS3 (with animations and gradients)
+---
 
-## Getting Started
+## 🛠️ Content Customization
 
-### Prerequisites
+All data, media definitions, text records, and profile assets are managed cleanly inside a single configuration node: `src/data.ts`.
 
-- Node.js (v16 or higher)
-- npm or yarn
+### 1. The Profile Identity
+Manage primary metadata, location arrays, email protocols, and resume tracking definitions directly inside the main data profile object.
 
-### Installation
+### 2. Upstream Social Networks
+Update the social links array. The interface automatically provisions the correct custom UI colors and branding iconography dynamically.
 
-1. Clone the repository:
-```bash
-git clone <your-repo-url>
-cd Idriss-Chefai-Portfolio
-```
+### 3. Injecting Project Records
+Each project item can be customized with:
+- Target categorical filters (`Games`, `Web`, `Mobile`, `AI`, `Software`)
+- Media hooks, game screenshots, or inline video embed tokens
+- Dynamic performance highlight lists
+- Specific paths linking to standalone PDF technical reports or game builds
 
-2. Install dependencies:
-```bash
-npm install
-```
+### 4. Competitions & Certifications
+Insert verified competitive achievements and credential licensing details directly into the sidebar loops. 
 
-3. Start the development server:
-```bash
-npm run dev
-```
 
-4. Open your browser and navigate to `http://localhost:5173`
+---
 
-### Building for Production
+## 📝 Terms & Licensing
 
-```bash
-npm run build
-```
-
-The built files will be in the `dist` folder.
-
-## Customization
-
-### Adding Your Profile Picture
-
-Place your profile image in the `public` folder as `profile.jpg`. The component will automatically use it, or display a placeholder with your initials if the image is not found.
-
-### Adding Your Resume
-
-Place your resume PDF in the `public` folder as `resume.pdf`. The download button will automatically link to it.
-
-### Updating Social Links
-
-Edit the `socialLinks` array in `src/components/Header.jsx` with your actual social media URLs.
-
-### Adding Projects
-
-Edit the `projects` array in `src/components/Projects.jsx` to add or modify your projects. Each project can include:
-- Title and description
-- Category (gamedev, web, mobile, ai, 3d)
-- Technologies used
-- Demo video URL (optional)
-- Screenshot URLs (optional)
-
-### Contact Form
-
-The contact form currently simulates sending an email. To enable actual email functionality, you'll need to:
-1. Set up a backend service (e.g., using Node.js/Express with nodemailer, or a service like Formspree, EmailJS, etc.)
-2. Update the `handleSubmit` function in `src/components/Contact.jsx`
-
-## Project Structure
-
-```
-├── public/
-│   ├── profile.jpg      # Your profile picture
-│   └── resume.pdf       # Your resume
-├── src/
-│   ├── components/
-│   │   ├── Header.jsx
-│   │   ├── Skills.jsx
-│   │   ├── Experience.jsx
-│   │   ├── Projects.jsx
-│   │   ├── ProjectModal.jsx
-│   │   ├── Education.jsx
-│   │   └── Contact.jsx
-│   ├── App.jsx
-│   ├── App.css
-│   ├── main.jsx
-│   └── index.css
-├── index.html
-├── package.json
-└── vite.config.js
-```
-
-## License
-
-This project is open source and available under the MIT License.
-
-## Contact
-
-Feel free to reach out through the contact form on the website or via the social links provided!
-
+Distributed under the **MIT License**. Open-source modular block construction.

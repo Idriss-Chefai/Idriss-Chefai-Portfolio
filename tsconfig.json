@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    
+    /* Crucial Fix: Tells TypeScript to recognize both Vite and Node.js environments */
+    "types": ["vite/client", "node"],
+    
+    /* Future-proof path mapping: we use relative prefix './src' instead of a baseUrl */
+    "paths": { 
+      "@/*": ["./src/*"] 
+    }
+  },
+  "include": ["src"]
+}
