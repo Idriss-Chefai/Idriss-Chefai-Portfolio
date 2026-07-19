@@ -16,6 +16,7 @@ export type Project = {
   highlights: string[];
   tech: string[];
   repo?: string;
+  liveUrl?: string; 
   media: MediaItem[];
   reportUrl?: string;
 };

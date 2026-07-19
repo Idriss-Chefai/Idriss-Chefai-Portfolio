@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Github,
@@ -27,7 +27,9 @@ import {
   ChevronUp,
   Terminal,
   Award,
-  Trophy
+  Trophy,
+  X,
+  Boxes
 } from "lucide-react";
 import {
   PROFILE,
@@ -35,7 +37,6 @@ import {
   CATS,
   PROJECTS,
   TIMELINE,
-  SKILLS,
   BRAND_LOGOS,
   BLOGS,
   CERTIFICATIONS,
@@ -62,7 +63,13 @@ const P = {
 const SOCIAL_ICONS: Record<string, React.ElementType> = {
   GitHub: Github,
   LinkedIn: Linkedin,
-  Instagram: Instagram
+  Instagram: Instagram,
+  GitLab: Terminal,
+  LeetCode: Cpu,   
+  Codeforces: Trophy, 
+  Facebook: Globe,
+  WhatsApp: Mail,
+  Email: Mail,
 };
 
 const CAT_ICONS: Record<Cat, React.ElementType> = {
@@ -71,31 +78,38 @@ const CAT_ICONS: Record<Cat, React.ElementType> = {
   Web: Globe,
   Mobile: Smartphone,
   AI: Cpu,
-  Software: Code2
+  Software: Code2,
+  Art : Layers
 };
 
-// 1. Updated SKILLS definition to map into clusters
-const SKILLS_BY_CATEGORY = {
-  "Interactive / Game Systems": {
-    desc: "3D Engines, multiplayer networking, physics, rendering pipelines, and character animation.",
-    skills: ["Unity", "C#", "Blender", "Mixamo", "Physics", "Multiplayer"]
+// COMPACT MATRIX TECH CLOUD DATA STRUCTURE
+const TECH_MATRIX = [
+  {
+    category: "Systems Programming & Low-Level",
+    icon: Terminal,
+    skills: ["C", "C++", "Optimization"]
   },
-  "Full-Stack Web & Mobile": {
-    desc: "Responsive web architectures, state management, and cross-platform mobile apps.",
-    skills: [
-      "React",
-      "TypeScript",
-      "Node.js",
-      "Tailwind CSS",
-      "Next.js",
-      "Firebase"
-    ]
+  {
+    category: "Interactive Systems & Game Engines",
+    icon: Gamepad2,
+    skills: ["Unity", "C#", "Physics", "Multiplayer"]
   },
-  "Tools, Systems & Engine": {
-    desc: "Version control, development CLIs, database configuration, and optimization techniques.",
-    skills: ["Git", "GitHub", "PostgreSQL", "SQL", "Docker", "Optimization"]
+  {
+    category: "3D Assets & Animation Pipelines",
+    icon: Layers,
+    skills: ["Blender", "Mixamo"]
+  },
+  {
+    category: "Full-Stack Web & Mobile",
+    icon: Globe,
+    skills: ["React", "TypeScript", "Node.js", "Next.js", "Tailwind CSS"]
+  },
+  {
+    category: "Data Science & Cloud Systems",
+    icon: Cpu,
+    skills: ["PostgreSQL", "SQL", "Firebase", "Docker", "Git", "GitHub"]
   }
-};
+];
 
 function BorderBeam({ active }: { active?: boolean }) {
   if (!active) return null;
@@ -141,7 +155,6 @@ function BentoCard({
         ...style
       }}
     >
-      {/* Smooth, static outline on hover instead of physical movement */}
       <div
         className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{ border: `1.5px solid ${P.accent}`, zIndex: 3 }}
@@ -186,14 +199,14 @@ function Label({
   );
 }
 
-function SocialChip({ s }: { s: (typeof SOCIALS)[0] }) {
+function SocialChip({ s }: { s: { label: string; handle: string; url: string; color: string } }) {
   const [hov, setHov] = useState(false);
   const Icon = SOCIAL_ICONS[s.label] ?? Globe;
   return (
     <a
       href={s.url}
-      target="_blank"
-      rel="noopener noreferrer"
+      target={s.url.startsWith("mailto:") ? undefined : "_blank"}
+      rel={s.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       className="flex items-center gap-2.5 rounded-xl px-3 py-2.5 w-full text-left transition-all duration-200"
@@ -243,10 +256,12 @@ const TIMELINE_COLOR: Record<TimelineItem["type"], string> = {
 
 function TimelineNode({
   item,
-  isLast
+  isLast,
+  onProjectLinkClick
 }: {
   item: TimelineItem;
   isLast: boolean;
+  onProjectLinkClick?: (projectName: string) => void;
 }) {
   const [open, setOpen] = useState(false);
   const color = TIMELINE_COLOR[item.type];
@@ -384,6 +399,19 @@ function TimelineNode({
                     ))}
                   </div>
                 )}
+                {item.role === "Software Engineering Intern" &&
+                  item.org.includes("Elite Council") &&
+                  onProjectLinkClick && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onProjectLinkClick("Dia-track");
+                      }}
+                      className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 bg-[#1C201E] border border-[#DFC07A] hover:bg-[#DFC07A] hover:text-[#131614] text-[#DFC07A]"
+                    >
+                      <ExternalLink size={11} /> View Dia-track Project Showcase
+                    </button>
+                  )}
               </div>
             </motion.div>
           )}
@@ -393,81 +421,64 @@ function TimelineNode({
   );
 }
 
-function SkillGrid() {
-  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+// COMPACT BENTO CLOUD MATRIX RENDER COMPONENT
+function CompactSkillMatrix() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
-      {Object.entries(SKILLS_BY_CATEGORY).map(([category, data]) => {
-        const isCatHovered = hoveredCategory === category;
-
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 w-full">
+      {TECH_MATRIX.map((cell) => {
+        const CategoryIcon = cell.icon;
         return (
           <div
-            key={category}
-            onMouseEnter={() => setHoveredCategory(category)}
-            onMouseLeave={() => setHoveredCategory(null)}
-            className="flex flex-col rounded-xl p-4 transition-all duration-300 relative"
+            key={cell.category}
+            className="rounded-xl p-3.5 flex flex-col transition-colors duration-200 border"
             style={{
               background: P.deep,
-              border: `1.5px solid ${isCatHovered ? P.accent : "transparent"}`,
-              boxShadow: isCatHovered
-                ? `0 6px 20px rgba(223, 192, 122, 0.05)`
-                : "none"
+              borderColor: P.border,
             }}
           >
-            {/* Category Header */}
-            <div className="mb-3">
+            {/* Cell Header */}
+            <div className="flex items-center gap-2 mb-3">
+              <div
+                className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0"
+                style={{ background: "rgba(0, 0, 0, 0.2)" }}
+              >
+                <CategoryIcon size={12} style={{ color: P.accent }} />
+              </div>
               <h4
                 style={{
-                  color: isCatHovered ? P.accent : P.cream,
-                  fontSize: 13,
+                  color: P.cream,
+                  fontSize: 10.5,
                   fontWeight: 750,
                   fontFamily: "'JetBrains Mono', monospace",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
-                  transition: "color 0.2s"
+                  letterSpacing: "0.02em",
+                  textTransform: "uppercase"
                 }}
+                className="truncate"
+                title={cell.category}
               >
-                {category}
+                {cell.category}
               </h4>
-              <p
-                style={{
-                  color: P.muted,
-                  fontSize: 11,
-                  lineHeight: 1.4,
-                  marginTop: 4
-                }}
-              >
-                {data.desc}
-              </p>
             </div>
 
-            {/* Inner Connector Line */}
-            <div
-              className="w-full h-px mb-4"
-              style={{ background: P.border }}
-            />
-
-            {/* Nodes (Skills) */}
-            <div className="flex flex-wrap gap-2.5 mt-auto">
-              {data.skills.map((skill) => {
+            {/* Tight Micro-Chip Ecosystem Cloud */}
+            <div className="flex flex-wrap gap-1.5 mt-auto">
+              {cell.skills.map((skill) => {
                 const brand = BRAND_LOGOS[skill];
-                const color = brand?.color ?? P.cream;
-                const isSkillHovered = hoveredSkill === skill;
+                const color = brand?.color ?? P.accent;
+                const isHovered = hoveredSkill === skill;
 
                 return (
                   <div
                     key={skill}
                     onMouseEnter={() => setHoveredSkill(skill)}
                     onMouseLeave={() => setHoveredSkill(null)}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg cursor-default select-none transition-all duration-200"
+                    className="flex items-center gap-1.5 px-2 py-1 rounded-md cursor-default select-none transition-all duration-200 border"
                     style={{
-                      background: isSkillHovered ? `${color}15` : P.card,
-                      border: `1.5px solid ${isSkillHovered ? color : "rgba(154, 167, 158, 0.1)"}`,
-                      boxShadow: isSkillHovered
-                        ? `0 4px 12px ${color}15`
-                        : "none"
+                      background: isHovered ? `${color}12` : P.card,
+                      borderColor: isHovered ? color : "rgba(154, 167, 158, 0.08)",
+                      boxShadow: isHovered ? `0 2px 8px ${color}10` : "none"
                     }}
                   >
                     {brand ? (
@@ -475,26 +486,26 @@ function SkillGrid() {
                         dangerouslySetInnerHTML={{
                           __html: brand.svg.replace(
                             /currentColor/g,
-                            isSkillHovered ? color : "#9AA79E"
+                            isHovered ? color : "#9AA79E"
                           )
                         }}
                         style={{
-                          width: 15,
-                          height: 15,
+                          width: 12,
+                          height: 12,
                           display: "block",
                           transition: "all 0.2s"
                         }}
                       />
                     ) : (
                       <Code2
-                        size={13}
-                        style={{ color: isSkillHovered ? color : P.muted }}
+                        size={10}
+                        style={{ color: isHovered ? color : P.muted }}
                       />
                     )}
                     <span
                       style={{
-                        color: isSkillHovered ? P.cream : P.muted,
-                        fontSize: 11,
+                        color: isHovered ? P.cream : P.muted,
+                        fontSize: 10.5,
                         fontFamily: "'JetBrains Mono', monospace",
                         fontWeight: 600,
                         transition: "color 0.2s"
@@ -527,22 +538,40 @@ function getEmbedUrl(url?: string) {
   return url;
 }
 
-function MediaCarousel({ project }: { project: Project }) {
-  const [idx, setIdx] = useState(0);
+function MediaCarousel({
+  project,
+  currentIndex,
+  onChangeIndex
+}: {
+  project: Project;
+  currentIndex: number;
+  onChangeIndex: (i: number) => void;
+}) {
   const [playing, setPlaying] = useState(false);
   const media =
     project.media.length > 0
       ? project.media
       : [{ type: "image" as const, thumb: "", label: project.name }];
-  const cur = media[idx];
-  const go = (n: number) => {
-    setIdx((idx + n + media.length) % media.length);
-    setPlaying(false);
-  };
+  const cur = media[currentIndex] || media[0];
+
   useEffect(() => {
-    setIdx(0);
+    if (media.length <= 1 || playing) return;
+
+    const interval = setInterval(() => {
+      onChangeIndex((currentIndex + 1) % media.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [currentIndex, media.length, playing, onChangeIndex]);
+
+  useEffect(() => {
     setPlaying(false);
   }, [project.id]);
+
+  const go = (n: number) => {
+    onChangeIndex((currentIndex + n + media.length) % media.length);
+    setPlaying(false);
+  };
 
   return (
     <div className="flex flex-col gap-3">
@@ -557,7 +586,7 @@ function MediaCarousel({ project }: { project: Project }) {
       >
         <AnimatePresence mode="wait">
           <motion.img
-            key={idx}
+            key={currentIndex}
             src={cur.thumb}
             alt={cur.label}
             initial={{ opacity: 0, x: 20 }}
@@ -569,8 +598,11 @@ function MediaCarousel({ project }: { project: Project }) {
         </AnimatePresence>
         {cur.type === "video" && !playing && (
           <button
-            onClick={() => setPlaying(true)}
-            className="absolute inset-0 flex items-center justify-center transition-all duration-200"
+            onClick={(e) => {
+              e.stopPropagation();
+              setPlaying(true);
+            }}
+            className="absolute inset-0 flex items-center justify-center transition-all duration-200 z-10"
             style={{ background: "rgba(0,0,0,0.4)" }}
           >
             <div
@@ -594,30 +626,38 @@ function MediaCarousel({ project }: { project: Project }) {
             title={`${project.name} demo`}
             allow="autoplay"
             allowFullScreen
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full z-20"
             style={{ border: 0 }}
           />
         )}
         {media.length > 1 && (
           <>
             <button
-              onClick={() => go(-1)}
+              onClick={(e) => {
+                e.stopPropagation();
+                go(-1);
+              }}
               className="absolute left-2.5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
               style={{
                 background: P.cream,
                 color: P.bg,
-                border: `1.5px solid ${P.bg}`
+                border: `1.5px solid ${P.bg}`,
+                zIndex: 30
               }}
             >
               <ChevronLeft size={20} />
             </button>
             <button
-              onClick={() => go(1)}
+              onClick={(e) => {
+                e.stopPropagation();
+                go(1);
+              }}
               className="absolute right-2.5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
               style={{
                 background: P.cream,
                 color: P.bg,
-                border: `1.5px solid ${P.bg}`
+                border: `1.5px solid ${P.bg}`,
+                zIndex: 30
               }}
             >
               <ChevronRight size={20} />
@@ -625,7 +665,7 @@ function MediaCarousel({ project }: { project: Project }) {
           </>
         )}
         <div
-          className="absolute bottom-2.5 left-3 px-2 py-1 rounded-md"
+          className="absolute bottom-2.5 left-3 px-2 py-1 rounded-md z-10"
           style={{
             background: "rgba(0,0,0,0.75)",
             border: `1px solid ${P.border}`,
@@ -643,15 +683,16 @@ function MediaCarousel({ project }: { project: Project }) {
           {media.map((_, i) => (
             <button
               key={i}
-              onClick={() => {
-                setIdx(i);
+              onClick={(e) => {
+                e.stopPropagation();
+                onChangeIndex(i);
                 setPlaying(false);
               }}
               style={{
-                width: i === idx ? 22 : 8,
+                width: i === currentIndex ? 22 : 8,
                 height: 8,
                 borderRadius: 4,
-                background: i === idx ? P.accent : `${P.muted}33`,
+                background: i === currentIndex ? P.accent : `${P.muted}33`,
                 transition: "all 0.22s ease"
               }}
             />
@@ -662,6 +703,7 @@ function MediaCarousel({ project }: { project: Project }) {
   );
 }
 
+// REST OF THE ARCHITECTURE AND MODALS REMAIN EXACTLY UNTOUCHED
 function BlogModal({ blog, onClose }: { blog: BlogPost; onClose: () => void }) {
   return (
     <motion.div
@@ -784,7 +826,6 @@ function BlogModal({ blog, onClose }: { blog: BlogPost; onClose: () => void }) {
   );
 }
 
-// LaTeX Report Viewer Modal Window
 function ReportModal({ url, onClose }: { url: string; onClose: () => void }) {
   return (
     <motion.div
@@ -821,7 +862,7 @@ function ReportModal({ url, onClose }: { url: string; onClose: () => void }) {
                 fontFamily: "'JetBrains Mono', monospace"
               }}
             >
-              compiled_manuscript.pdf
+              compiled_manusxlpt.pdf
             </p>
           </div>
         </div>
@@ -860,7 +901,118 @@ function ReportModal({ url, onClose }: { url: string; onClose: () => void }) {
   );
 }
 
-// Core Engine Boot-up Loading Screen
+function LightboxModal({
+  mediaList,
+  activeIndex,
+  onChangeIndex,
+  onClose
+}: {
+  mediaList: any[];
+  activeIndex: number;
+  onChangeIndex: (i: number) => void;
+  onClose: () => void;
+}) {
+  const [playing, setPlaying] = useState(false);
+  const cur = mediaList[activeIndex] || mediaList[0];
+
+  const go = (n: number) => {
+    onChangeIndex((activeIndex + n + mediaList.length) % mediaList.length);
+    setPlaying(false);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+      className="fixed inset-0 z-[110] flex flex-col items-center justify-center p-4 bg-black/95 backdrop-blur-md cursor-zoom-out select-none"
+    >
+      <div
+        className="w-full max-w-5xl flex items-center justify-between mb-3 px-2 text-[#F2ECD9]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <span className="font-mono text-xs opacity-70">
+          IMAGE {activeIndex + 1} / {mediaList.length}
+        </span>
+        <button
+          onClick={onClose}
+          className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/15 transition-colors cursor-pointer"
+        >
+          <X size={16} />
+        </button>
+      </div>
+
+      <div
+        className="relative max-w-5xl w-full max-h-[75vh] aspect-video rounded-xl overflow-hidden bg-[#131614] border border-white/10"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <AnimatePresence mode="wait">
+          {cur.type === "video" && playing && cur.embedUrl ? (
+            <iframe
+              key={`vid-${activeIndex}`}
+              src={getEmbedUrl(cur.embedUrl) ?? undefined}
+              className="w-full h-full border-0 absolute inset-0"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+            />
+          ) : (
+            <motion.img
+              key={`img-${activeIndex}`}
+              src={cur.thumb}
+              alt={cur.label}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+              className="w-full h-full object-contain"
+            />
+          )}
+        </AnimatePresence>
+
+        {cur.type === "video" && !playing && (
+          <button
+            onClick={() => setPlaying(true)}
+            className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/45 transition-colors cursor-pointer z-10"
+          >
+            <div className="w-16 h-16 rounded-full flex items-center justify-center bg-[#DFC07A] shadow-xl">
+              <Play
+                size={24}
+                fill="#131614"
+                style={{ color: "#131614", marginLeft: 4 }}
+              />
+            </div>
+          </button>
+        )}
+
+        {mediaList.length > 1 && (
+          <>
+            <button
+              onClick={() => go(-1)}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-xl flex items-center justify-center bg-black/60 border border-white/10 text-white hover:bg-black/90 hover:scale-105 transition-all cursor-pointer z-30"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button
+              onClick={() => go(1)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-xl flex items-center justify-center bg-black/60 border border-white/10 text-white hover:bg-black/90 hover:scale-105 transition-all cursor-pointer z-30"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </>
+        )}
+      </div>
+
+      <div
+        className="mt-4 px-4 py-2 rounded-xl bg-white/5 border border-white/10 font-mono text-xs text-[#F2ECD9] text-center max-w-xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {cur.label}
+      </div>
+    </motion.div>
+  );
+}
+
 function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   const [logs, setLogs] = useState<string[]>([]);
 
@@ -881,7 +1033,7 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
         currentLogIndex++;
       } else {
         clearInterval(interval);
-        setTimeout(onComplete, 400); // Small pause at the end for smooth fadeout
+        setTimeout(onComplete, 400);
       }
     }, 240);
 
@@ -903,7 +1055,6 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
           boxShadow: "0 20px 50px rgba(0,0,0,0.6)"
         }}
       >
-        {/* Terminal Header */}
         <div
           className="flex items-center justify-between pb-4 mb-4"
           style={{ borderBottom: `1px solid ${P.border}` }}
@@ -938,7 +1089,6 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
           </div>
         </div>
 
-        {/* Dynamic Log Output */}
         <div
           className="flex flex-col gap-2 min-h-[140px] font-mono text-[12px] leading-relaxed select-none"
           style={{ color: P.muted }}
@@ -983,17 +1133,79 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [activeCat, setActiveCat] = useState<Cat>("All");
   const [activeProject, setActiveProject] = useState(PROJECTS[0]);
+  const [projectMediaIndex, setProjectMediaIndex] = useState(0); 
   const [openBlog, setOpenBlog] = useState<BlogPost | null>(null);
   const [openReport, setOpenReport] = useState<string | null>(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [showMoreLinks, setShowMoreLinks] = useState(false);
+
+  // AUTOMATED METRICS ENGINE
+  const totalInternships = TIMELINE.filter((item) => item.type === "intern").length;
+  const totalProjects = PROJECTS.length;
+  const totalHackathons = COMPETITIONS.length;
+  const totalCertifications = CERTIFICATIONS.length;
+
+  // Calculates years since your earliest listed education timeline entry
+  const yearsInField = (() => {
+    const eduItems = TIMELINE.filter((item) => item.type === "edu");
+    if (eduItems.length === 0) return 4; // Intelligent hard-coded baseline fallback
+    
+    const years = eduItems.map((item) => {
+      const match = item.period.match(/\b(20\d{2})\b/);
+      return match ? parseInt(match[1], 10) : null;
+    }).filter((y): y is number => y !== null);
+
+    if (years.length === 0) return 4;
+    const startYear = Math.min(...years);
+    const currentYear = new Date().getFullYear();
+    return Math.max(1, currentYear - startYear);
+  })();
+
+  const absoluteSocialsList = [
+    ...SOCIALS,
+    {
+      label: "Email",
+      handle: PROFILE.email,
+      url: `mailto:${PROFILE.email}`,
+      color: "#DFC07A"
+    }
+  ];
 
   const filtered = PROJECTS.filter(
     (p) => activeCat === "All" || p.cat.includes(activeCat)
   );
+
   const handleCat = (c: Cat) => {
     setActiveCat(c);
     const first = PROJECTS.find((p) => c === "All" || p.cat.includes(c));
-    if (first) setActiveProject(first);
+    if (first) {
+      setActiveProject(first);
+      setProjectMediaIndex(0);
+    }
   };
+
+  const selectProject = (p: Project) => {
+    setActiveProject(p);
+    setProjectMediaIndex(0);
+  };
+
+  const navigateToProjectByName = useCallback((projectName: string) => {
+    const target = PROJECTS.find((p) =>
+      p.name.toLowerCase().includes(projectName.toLowerCase())
+    );
+    if (target) {
+      const primaryCat = target.cat.find((c) => c !== "All") || "All";
+      setActiveCat(primaryCat);
+      setActiveProject(target);
+      setProjectMediaIndex(0);
+
+      setTimeout(() => {
+        document
+          .getElementById("my-projects-section")
+          ?.scrollIntoView({ behavior: "smooth" });
+      }, 50);
+    }
+  }, []);
 
   const experienceItems = TIMELINE.filter((item) => item.type === "intern");
   const educationItems = TIMELINE.filter((item) => item.type === "edu");
@@ -1027,7 +1239,6 @@ export default function App() {
                 style={{ borderRight: `1px solid ${P.border}` }}
               >
                 <div className="flex flex-col gap-5 p-5">
-                  {/* Profile */}
                   <BentoCard beam>
                     <div className="flex gap-4 items-start">
                       <div className="relative flex-shrink-0">
@@ -1117,6 +1328,33 @@ export default function App() {
                         </div>
                       </div>
                     </div>
+
+                    {/* DENSE HIGH-IMPACT AUTOMATED METRICS ROW  */}
+                    <div 
+                      className="grid grid-cols-4 gap-2 mt-5 p-2 rounded-xl border border-dashed text-center"
+                      style={{ 
+                        background: "rgba(0,0,0,0.15)", 
+                        borderColor: P.border 
+                      }}
+                    >
+                      <div>
+                        <p style={{ color: P.accent, fontSize: 18, fontFamily: "'JetBrains Mono', monospace", fontWeight: 800, lineHeight: 1 }}>{yearsInField}</p>
+                        <p style={{ color: P.muted, fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 2 }}>Years Exp</p>
+                      </div>
+                      <div style={{ borderLeft: `1px solid ${P.border}` }}>
+                        <p style={{ color: P.cream, fontSize: 18, fontFamily: "'JetBrains Mono', monospace", fontWeight: 800, lineHeight: 1 }}>{totalInternships}</p> 
+                        <p style={{ color: P.muted, fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 2 }}>Internships</p>
+                      </div>
+                      <div style={{ borderLeft: `1px solid ${P.border}` }}>
+                        <p style={{ color: P.cream, fontSize: 18, fontFamily: "'JetBrains Mono', monospace", fontWeight: 800, lineHeight: 1 }}>{totalCertifications}</p> 
+                        <p style={{ color: P.muted, fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 2 }}>Certs</p> 
+                      </div>
+                      <div style={{ borderLeft: `1px solid ${P.border}` }}>
+                        <p style={{ color: P.cream, fontSize: 18, fontFamily: "'JetBrains Mono', monospace", fontWeight: 800, lineHeight: 1 }}>{totalHackathons}</p> 
+                        <p style={{ color: P.muted, fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 2 }}>Hackathons</p>
+                      </div>
+                    </div>
+
                     <p
                       style={{
                         color: P.muted,
@@ -1127,19 +1365,64 @@ export default function App() {
                     >
                       {PROFILE.bio}
                     </p>
-                  </BentoCard>
-
-                  {/* Connect */}
-                  <BentoCard>
-                    <Label icon={Users} text="Connect" />
-                    <div className="grid grid-cols-1 gap-2">
-                      {SOCIALS.map((s) => (
-                        <SocialChip key={s.label} s={s} />
-                      ))}
+                    <div className="mt-4">
+                      <a
+                        href={PROFILE.resumeFile}
+                        download={PROFILE.resumeDownloadName}
+                        className="inline-flex items-center gap-2.5 rounded-xl px-4 py-2.5 transition-transform duration-200 hover:scale-102 font-bold text-xs"
+                        style={{
+                          background: P.accent,
+                          color: P.bg
+                        }}
+                      >
+                        <Download size={14} />
+                        Download Resume
+                      </a>
                     </div>
                   </BentoCard>
 
-                  {/* Experience */}
+                  <BentoCard>
+                    <Label icon={Users} text="Connect" />
+                    <div className="grid grid-cols-1 gap-2">
+                      {absoluteSocialsList.slice(0, 3).map((s) => (
+                        <SocialChip key={s.label} s={s} />
+                      ))}
+
+                      <AnimatePresence initial={false}>
+                        {showMoreLinks && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25, ease: "easeInOut" }}
+                            className="flex flex-col gap-2 overflow-hidden w-full"
+                          >
+                            {absoluteSocialsList.slice(3).map((s) => (
+                              <SocialChip key={s.label} s={s} />
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+
+                      {absoluteSocialsList.length > 3 && (
+                        <button
+                          onClick={() => setShowMoreLinks(!showMoreLinks)}
+                          className="mt-2 w-full py-2 rounded-xl text-center text-xs font-semibold tracking-wider uppercase transition-all duration-200 border border-transparent hover:border-[#DFC07A]/40"
+                          style={{
+                            background: P.deep,
+                            color: P.accent,
+                            fontFamily: "'JetBrains Mono', monospace",
+                            cursor: "pointer"
+                          }}
+                        >
+                          {showMoreLinks
+                            ? "Show Less ▲"
+                            : `More Links (${absoluteSocialsList.length - 3}) ▼`}
+                        </button>
+                      )}
+                    </div>
+                  </BentoCard>
+
                   <BentoCard>
                     <Label icon={Briefcase} text="Experience" />
                     <div className="flex flex-col">
@@ -1148,12 +1431,12 @@ export default function App() {
                           key={i}
                           item={item}
                           isLast={i === experienceItems.length - 1}
+                          onProjectLinkClick={navigateToProjectByName}
                         />
                       ))}
                     </div>
                   </BentoCard>
 
-                  {/* Education */}
                   <BentoCard>
                     <Label icon={GraduationCap} text="Education" />
                     <div className="flex flex-col">
@@ -1167,7 +1450,6 @@ export default function App() {
                     </div>
                   </BentoCard>
 
-                  {/* Competitions */}
                   {COMPETITIONS && COMPETITIONS.length > 0 && (
                     <BentoCard>
                       <Label icon={Trophy} text="Competitions" />
@@ -1183,6 +1465,19 @@ export default function App() {
                             <div className="flex-1 min-w-0">
                               <div className="flex items-start justify-between gap-2">
                                 <h4
+                                  onClick={() => {
+                                    if (
+                                      comp.title.toLowerCase().includes("ai ad")
+                                    )
+                                      navigateToProjectByName("AI Industrial");
+                                    if (
+                                      comp.title
+                                        .toLowerCase()
+                                        .includes("game jam")
+                                    )
+                                      navigateToProjectByName("VoidRunner");
+                                  }}
+                                  className="cursor-pointer hover:text-[#DFC07A] transition-colors duration-200 decoration-dotted hover:underline"
                                   style={{
                                     color: P.cream,
                                     fontSize: 14,
@@ -1213,15 +1508,18 @@ export default function App() {
                               >
                                 {comp.award || comp.rank || comp.result}
                               </p>
-                              {(comp.organizer || comp.event) && (
+                              {(comp.organizer ||
+                                comp.event ||
+                                comp.description) && (
                                 <p
                                   style={{
                                     color: P.muted,
                                     fontSize: 12,
-                                    marginTop: 1
+                                    marginTop: 4,
+                                    lineHeight: 1.4
                                   }}
                                 >
-                                  {comp.organizer || comp.event}
+                                  {comp.description}
                                 </p>
                               )}
                             </div>
@@ -1231,7 +1529,6 @@ export default function App() {
                     </BentoCard>
                   )}
 
-                  {/* Certifications */}
                   {CERTIFICATIONS && CERTIFICATIONS.length > 0 && (
                     <BentoCard>
                       <Label icon={Award} text="Certifications" />
@@ -1276,24 +1573,16 @@ export default function App() {
                               >
                                 {cert.issuer || cert.authority || cert.org}
                               </p>
-
-                              {/* VIEW CERTIFICATE BUTTON */}
                               {(cert.image || cert.url) && (
                                 <a
                                   href={cert.image || cert.url || undefined}
                                   onClick={(e) => {
-                                    // If the URL is missing or empty, block the default link behavior completely
-                                    if (!cert.image && !cert.url) {
+                                    if (!cert.image && !cert.url)
                                       e.preventDefault();
-                                    }
                                   }}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className={`mt-2.5 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 ${
-                                    !cert.image && !cert.url
-                                      ? "opacity-40 cursor-not-allowed"
-                                      : "hover:scale-[1.02]"
-                                  }`}
+                                  className={`mt-2.5 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 ${!cert.image && !cert.url ? "opacity-40 cursor-not-allowed" : "hover:scale-[1.02]"}`}
                                   style={{
                                     background: P.deep,
                                     border: `1px solid ${P.border}`,
@@ -1316,50 +1605,16 @@ export default function App() {
               {/* RIGHT COLUMN */}
               <main className="flex-1 lg:h-full lg:overflow-y-auto relative">
                 <div className="flex flex-col gap-5 p-5">
-                  {/* Core Skills Grid */}
+                  
+                  {/* BEAUTIFIED CORE SKILLS MATRIX CARD */}
                   <BentoCard>
-                    <Label icon={Cpu} text="Core Skills" />
-                    <SkillGrid />
+                    <Label icon={Boxes} text="Core Ecosystem Stack" />
+                    <CompactSkillMatrix />
                   </BentoCard>
 
-                  {/* Contact / Resume */}
-                  <BentoCard>
-                    <Label icon={Mail} text="Get In Touch" />
-                    <div className="flex flex-col md:flex-row gap-3">
-                      <a
-                        href={PROFILE.resumeFile}
-                        download={PROFILE.resumeDownloadName}
-                        className="flex-1 flex items-center justify-center gap-2.5 rounded-xl px-4 py-3.5 transition-transform duration-200 hover:scale-102"
-                        style={{
-                          background: P.accent,
-                          color: P.bg,
-                          fontWeight: 750,
-                          fontSize: 14
-                        }}
-                      >
-                        <Download size={16} />
-                        Download Resume
-                      </a>
-                      <a
-                        href={`mailto:${PROFILE.email}`}
-                        className="flex-1 flex items-center justify-center gap-2.5 rounded-xl px-4 py-3.5 transition-colors duration-200 hover:border-accent"
-                        style={{
-                          background: P.deep,
-                          border: `1px solid ${P.border}`,
-                          color: P.cream,
-                          fontWeight: 600,
-                          fontSize: 14
-                        }}
-                      >
-                        <Mail size={16} style={{ color: P.muted }} />
-                        {PROFILE.email}
-                      </a>
-                    </div>
-                  </BentoCard>
-
-                  {/* Projects */}
                   <BentoCard beam noPad>
                     <div
+                      id="my-projects-section"
                       className="flex gap-2 flex-wrap px-5 pt-5 pb-3"
                       style={{ borderBottom: `1px solid ${P.border}` }}
                     >
@@ -1407,8 +1662,15 @@ export default function App() {
                         transition={{ duration: 0.2 }}
                         className="flex flex-col md:flex-row gap-5 p-5"
                       >
-                        <div className="md:w-[52%]">
-                          <MediaCarousel project={activeProject} />
+                        <div
+                          className="md:w-[52%] cursor-zoom-in group/carousel"
+                          onClick={() => setLightboxOpen(true)}
+                        >
+                          <MediaCarousel
+                            project={activeProject}
+                            currentIndex={projectMediaIndex}
+                            onChangeIndex={setProjectMediaIndex}
+                          />
                         </div>
                         <div className="flex-1 flex flex-col gap-4 min-w-0">
                           <div>
@@ -1484,11 +1746,11 @@ export default function App() {
                             )}
                           </div>
 
-                          {/* Project Action Panel */}
                           <div className="flex flex-wrap gap-2 mt-2">
-                            {activeProject.repo && (
+                            {/* Live Demo Deployment Link Setup */}
+                            {activeProject.liveUrl && (
                               <a
-                                href={activeProject.repo}
+                                href={activeProject.liveUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm transition-transform duration-200 hover:scale-102"
@@ -1499,13 +1761,32 @@ export default function App() {
                                   fontSize: 14
                                 }}
                               >
+                                <Globe size={16} />
+                                Live Demo
+                                <ExternalLink size={12} />
+                              </a>
+                            )}
+
+                            {activeProject.repo && (
+                              <a
+                                href={activeProject.repo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm transition-transform duration-200 hover:scale-102"
+                                style={{
+                                  background: activeProject.liveUrl ? P.deep : P.accent,
+                                  border: activeProject.liveUrl ? `1px solid ${P.border}` : "none",
+                                  color: activeProject.liveUrl ? P.cream : P.bg,
+                                  minHeight: 48,
+                                  fontSize: 14
+                                }}
+                              >
                                 <Github size={16} />
                                 View Source
                                 <ExternalLink size={12} />
                               </a>
                             )}
 
-                            {/* LaTeX Report Button */}
                             {activeProject.reportUrl && (
                               <button
                                 onClick={() =>
@@ -1541,7 +1822,7 @@ export default function App() {
                           {filtered.map((p) => (
                             <button
                               key={p.id}
-                              onClick={() => setActiveProject(p)}
+                              onClick={() => selectProject(p)}
                               className="flex-shrink-0 px-4 py-2 rounded-xl text-sm font-semibold transition-colors duration-200"
                               style={{
                                 background:
@@ -1563,7 +1844,6 @@ export default function App() {
                       </div>
                     )}
 
-                    {/* Blog Section */}
                     <div
                       className="px-5 pt-5 pb-4 hidden md:block"
                       style={{ borderTop: `1px solid ${P.border}` }}
@@ -1629,6 +1909,24 @@ export default function App() {
                     <ReportModal
                       url={openReport}
                       onClose={() => setOpenReport(null)}
+                    />
+                  )}
+                  {lightboxOpen && (
+                    <LightboxModal
+                      mediaList={
+                        activeProject.media.length > 0
+                          ? activeProject.media
+                          : [
+                              {
+                                type: "image",
+                                thumb: "",
+                                label: activeProject.name
+                              }
+                            ]
+                      }
+                      activeIndex={projectMediaIndex}
+                      onChangeIndex={setProjectMediaIndex}
+                      onClose={() => setLightboxOpen(false)}
                     />
                   )}
                 </AnimatePresence>

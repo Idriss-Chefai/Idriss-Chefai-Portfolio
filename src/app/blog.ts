@@ -8,13 +8,10 @@ const modules = import.meta.glob("../content/.blog/*.md", {
 }) as Record<string, string>;
 
 export const MD_BLOGS: BlogPost[] = Object.entries(modules).map(([path, raw], i) => {
-  // If Vite imports the file as an ES module object (e.g. { default: "raw markdown text" })
-  // we extract the raw text safely, otherwise we use the raw string directly.
   const rawContent = typeof raw === "object" && raw !== null && "default" in raw 
     ? (raw as { default: string }).default 
     : (raw as unknown as string);
 
-  // We use matter.default if compiled as a default import, fallback to matter as a function
   const parse = typeof matter === "function" ? matter : (matter as any).default;
   const { data, content } = parse(rawContent);
 

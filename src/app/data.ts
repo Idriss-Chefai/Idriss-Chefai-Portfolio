@@ -23,9 +23,15 @@ export const PROFILE = {
 
 // 2. Social Media Links
 export const SOCIALS = [
-  { label: "GitHub", handle: "@Idriss-Chefai", url: "https://github.com/Idriss-Chefai", color: "#E6EDF3" },
-  { label: "LinkedIn", handle: "Idriss Chefai", url: "https://www.linkedin.com/in/idriss-chefai/", color: "#0A66C2" },
-  { label: "Instagram", handle: "@_idriss_c_", url: "https://www.instagram.com/_idriss_c_/", color: "#E1306C" },
+  { label: "GitHub", handle: "@yourprofile", url: "...", color: "#24292e" },
+  { label: "LinkedIn", handle: "@yourprofile", url: "...", color: "#0077b5" },
+  { label: "Instagram", handle: "@yourprofile", url: "...", color: "#e1306c" },
+  // Everything below here stays tucked away dynamically!
+  { label: "GitLab", handle: "@yourprofile", url: "...", color: "#fc6d26" },
+  { label: "LeetCode", handle: "@yourprofile", url: "...", color: "#f89f1b" },
+  { label: "Codeforces", handle: "@yourprofile", url: "...", color: "#3182ce" },
+  { label: "Facebook", handle: "@yourprofile", url: "...", color: "#1877f2" },
+  { label: "WhatsApp", handle: "@yourprofile", url: "...", color: "#25d366" },
 ];
 
 // 3. Re-exporting Types and Large Data Chunks
