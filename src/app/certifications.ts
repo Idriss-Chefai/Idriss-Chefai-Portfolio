@@ -3,9 +3,18 @@ import { Certification } from "./data-types";
 
 export const CERTIFICATIONS: Certification[] = [
   {
-    name: "Unity Certified Developer",
-    issuer: "Unity Technologies",
-    date: "Dec 2025",
-    image: "/src/content/.certifications/professional img.jpeg" // Put your certificate files in the /public folder
+    name: "Data Analysis with Python",
+    issuer: "freeCodeCamp",
+    date: "Aug 2024"
+  },
+  {
+    name: "Legacy JavaScript Algorithms and Data Structures",
+    issuer: "freeCodeCamp",
+    date: "Feb 2023"
+  },
+  {
+    name: "Responsive Web Design",
+    issuer: "freeCodeCamp",
+    date: "Sep 2022"
   }
 ];

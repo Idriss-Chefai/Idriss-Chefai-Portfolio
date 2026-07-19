@@ -1331,16 +1331,12 @@ export default function App() {
 
                     {/* DENSE HIGH-IMPACT AUTOMATED METRICS ROW  */}
                     <div 
-                      className="grid grid-cols-4 gap-2 mt-5 p-2 rounded-xl border border-dashed text-center"
+                      className="grid grid-cols-3 gap-2 mt-5 p-2 rounded-xl border border-dashed text-center"
                       style={{ 
                         background: "rgba(0,0,0,0.15)", 
                         borderColor: P.border 
                       }}
                     >
-                      <div>
-                        <p style={{ color: P.accent, fontSize: 18, fontFamily: "'JetBrains Mono', monospace", fontWeight: 800, lineHeight: 1 }}>{yearsInField}</p>
-                        <p style={{ color: P.muted, fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 2 }}>Years Exp</p>
-                      </div>
                       <div style={{ borderLeft: `1px solid ${P.border}` }}>
                         <p style={{ color: P.cream, fontSize: 18, fontFamily: "'JetBrains Mono', monospace", fontWeight: 800, lineHeight: 1 }}>{totalInternships}</p> 
                         <p style={{ color: P.muted, fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 2 }}>Internships</p>

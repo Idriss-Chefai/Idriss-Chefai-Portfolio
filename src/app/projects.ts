@@ -86,13 +86,13 @@ export const PROJECTS: Project[] = [
       "Aggregated, upscaled, and edited AI-generated video segments into a cohesive, high-retention marketing asset tailored for mobile feeds",
     ],
     tech: ["Generative AI Video Tools", "AI Voice Synthesis", "Video Editing Systems", "Prompt Engineering"],
-    media: [{ type: "image", thumb: "/assets/thumbnails/ai_hackathon.png", label: "Ad Campaign Reel Preview" }],
+    media: [{ type: "video", thumb: "/assets/thumbnails/ai_hackathon.png", label: "Ad Campaign Reel Preview" , embedUrl: "https://drive.google.com/file/d/1-KkXVC0YuTeiZJd8LhBxt7hItvE2U0l6/view?usp=sharing" }],
   },
   {
     id: 6,
-    name: "Global Game Jam Project",
+    name: "Global Game Jam Project (Backstage)",
     cat: ["Games"],
-    role: "Solo Technical Designer",
+    role: "Technical Designer , UI/UX , Mechanics Developer",
     period: "2026",
     highlights: [
       "Rapidly prototyped a game within a strict 48-hour development window conforming to the event theme",
@@ -100,7 +100,16 @@ export const PROJECTS: Project[] = [
       "Iterated rapidly on intuitive mechanics using customized asset templates and flexible logic components",
     ],
     tech: ["C#", "Unity", "Rapid Prototyping"],
-    media: [{ type: "image", thumb: "/assets/thumbnails/ggj_project.png", label: "Jam Entry Build" }],
+    media: [{ type: "video", thumb: "src/content/.projects/GGJ26/1.png", label: "Jam Entry Build",embedUrl:"https://drive.google.com/file/d/1-xlgg5seTGxJ_q5P2TEcoTu5gnq2Kqu2/view?usp=drive_link"},
+
+      { type: "image", thumb: "src/content/.projects/GGJ26/1.png", label: "Screenshot" },
+      { type: "image", thumb: "src/content/.projects/GGJ26/1.png", label: "Screenshot" },
+      { type: "image", thumb: "src/content/.projects/GGJ26/3.png", label: "Screenshot" },
+      { type: "image", thumb: "src/content/.projects/GGJ26/4.png", label: "Screenshot" },
+      { type: "image", thumb: "src/content/.projects/GGJ26/5.png", label: "Screenshot" },
+      { type: "image", thumb: "src/content/.projects/GGJ26/5.png", label: "Screenshot" },
+
+    ],
   },
   {
     id: 7,
@@ -141,7 +150,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 9,
-    name: "English Web Platform",
+    name: "Pure Change",
     cat: ["Web"],
     role: "Front-End Developer",
     period: "2025",
@@ -151,6 +160,7 @@ export const PROJECTS: Project[] = [
       "Optimized DOM structures and light media delivery pipelines to minimize asset overhead and page load speeds",
     ],
     tech: ["React", "TypeScript", "Tailwind CSS"],
+    liveUrl: "https://idriss-chefai.github.io/Pure-Change-Official-Website/",
     media: [{ type: "image", thumb: "/assets/thumbnails/english_platform.png", label: "Desktop Interface" }],
   },
   {
