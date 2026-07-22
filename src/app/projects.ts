@@ -17,7 +17,7 @@ export const PROJECTS: Project[] = [
     media: [
       {
         type: "video",
-        thumb: "src/content/projects/VoidRunner/1.png",
+        thumb: "/content/projects/VoidRunner/1.png",
         label: "Gameplay Demo",
         embedUrl:
           "https://drive.google.com/file/d/1JoI-65W0MYumv_NUeM40xrWlrgOSmAu9/view?usp=drive_link"
@@ -126,7 +126,7 @@ export const PROJECTS: Project[] = [
     media: [
       {
         type: "video",
-        thumb: "src/content/projects/GGJ26/1.png",
+        thumb: "/content/projects/GGJ26/1.png",
         label: "Jam Entry Build",
         embedUrl:
           "https://drive.google.com/file/d/1-xlgg5seTGxJ_q5P2TEcoTu5gnq2Kqu2/view?usp=drive_link"
@@ -134,32 +134,32 @@ export const PROJECTS: Project[] = [
 
       {
         type: "image",
-        thumb: "src/content/projects/GGJ26/1.png",
+        thumb: "/content/projects/GGJ26/1.png",
         label: "Screenshot"
       },
       {
         type: "image",
-        thumb: "src/content/projects/GGJ26/1.png",
+        thumb: "/content/projects/GGJ26/1.png",
         label: "Screenshot"
       },
       {
         type: "image",
-        thumb: "src/content/projects/GGJ26/3.png",
+        thumb: "/content/projects/GGJ26/3.png",
         label: "Screenshot"
       },
       {
         type: "image",
-        thumb: "src/content/projects/GGJ26/4.png",
+        thumb: "/content/projects/GGJ26/4.png",
         label: "Screenshot"
       },
       {
         type: "image",
-        thumb: "src/content/projects/GGJ26/5.png",
+        thumb: "/content/projects/GGJ26/5.png",
         label: "Screenshot"
       },
       {
         type: "image",
-        thumb: "src/content/projects/GGJ26/5.png",
+        thumb: "/content/projects/GGJ26/5.png",
         label: "Screenshot"
       }
     ]
@@ -342,22 +342,22 @@ export const PROJECTS: Project[] = [
     media: [
       {
         type: "image",
-        thumb: "src/content/projects/adventure_game/1.png",
+        thumb: "/content/projects/adventure_game/1.png",
         label: "Tutorial"
       },
       {
         type: "image",
-        thumb: "src/content/projects/adventure_game/2.png",
+        thumb: "/content/projects/adventure_game/2.png",
         label: "Level 1"
       },
       {
         type: "image",
-        thumb: "src/content/projects/adventure_game/3.png",
+        thumb: "/content/projects/adventure_game/3.png",
         label: "Level 2"
       },
       {
         type: "image",
-        thumb: "src/content/projects/adventure_game/4.png",
+        thumb: "/content/projects/adventure_game/4.png",
         label: "Dialogue System Showcase"
       }
     ]
