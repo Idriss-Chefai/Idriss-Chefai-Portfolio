@@ -65,11 +65,11 @@ const SOCIAL_ICONS: Record<string, React.ElementType> = {
   LinkedIn: Linkedin,
   Instagram: Instagram,
   GitLab: Terminal,
-  LeetCode: Cpu,   
-  Codeforces: Trophy, 
+  LeetCode: Cpu,
+  Codeforces: Trophy,
   Facebook: Globe,
   WhatsApp: Mail,
-  Email: Mail,
+  Email: Mail
 };
 
 const CAT_ICONS: Record<Cat, React.ElementType> = {
@@ -79,35 +79,35 @@ const CAT_ICONS: Record<Cat, React.ElementType> = {
   Mobile: Smartphone,
   AI: Cpu,
   Software: Code2,
-  Art : Layers
+  Art: Layers,
+  "UI/UX": Layers
 };
 
-// COMPACT MATRIX TECH CLOUD DATA STRUCTURE
-const TECH_MATRIX = [
+export const TECH_MATRIX = [
   {
     category: "Systems Programming & Low-Level",
     icon: Terminal,
-    skills: ["C", "C++", "Optimization"]
+    skills: ["C", "C++", "Python", "Java"]
   },
   {
-    category: "Interactive Systems & Game Engines",
+    category: "Game Engines & 3D",
     icon: Gamepad2,
-    skills: ["Unity", "C#", "Physics", "Multiplayer"]
-  },
-  {
-    category: "3D Assets & Animation Pipelines",
-    icon: Layers,
-    skills: ["Blender", "Mixamo"]
+    skills: ["Unity", "C#", "Blender"]
   },
   {
     category: "Full-Stack Web & Mobile",
     icon: Globe,
-    skills: ["React", "TypeScript", "Node.js", "Next.js", "Tailwind CSS"]
+    skills: ["React", "Angular", "Node.js", "Flask", "Spring Boot", "Symfony", ".NET", "Flutter", "JavaScript", "TypeScript"]
   },
   {
-    category: "Data Science & Cloud Systems",
+    category: "Databases & Tools",
     icon: Cpu,
-    skills: ["PostgreSQL", "SQL", "Firebase", "Docker", "Git", "GitHub"]
+    skills: ["MySQL", "PostgreSQL", "MongoDB", "Git", "Solidity"]
+  },
+  {
+    category: "AI & Data Science",
+    icon: Layers,
+    skills: ["TensorFlow", "PyTorch", "scikit-learn", "Pandas"]
   }
 ];
 
@@ -199,7 +199,11 @@ function Label({
   );
 }
 
-function SocialChip({ s }: { s: { label: string; handle: string; url: string; color: string } }) {
+function SocialChip({
+  s
+}: {
+  s: { label: string; handle: string; url: string; color: string };
+}) {
   const [hov, setHov] = useState(false);
   const Icon = SOCIAL_ICONS[s.label] ?? Globe;
   return (
@@ -399,19 +403,18 @@ function TimelineNode({
                     ))}
                   </div>
                 )}
-                {item.role === "Software Engineering Intern" &&
-                  item.org.includes("Elite Council") &&
-                  onProjectLinkClick && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onProjectLinkClick("Dia-track");
-                      }}
-                      className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 bg-[#1C201E] border border-[#DFC07A] hover:bg-[#DFC07A] hover:text-[#131614] text-[#DFC07A]"
-                    >
-                      <ExternalLink size={11} /> View Dia-track Project Showcase
-                    </button>
-                  )}
+                {item.projectName && onProjectLinkClick && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onProjectLinkClick(item.projectName!);
+                    }}
+                    className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 bg-[#1C201E] border border-[#DFC07A] hover:bg-[#DFC07A] hover:text-[#131614] text-[#DFC07A]"
+                  >
+                    <ExternalLink size={11} /> View {item.projectName} Project
+                    Showcase
+                  </button>
+                )}
               </div>
             </motion.div>
           )}
@@ -435,7 +438,7 @@ function CompactSkillMatrix() {
             className="rounded-xl p-3.5 flex flex-col transition-colors duration-200 border"
             style={{
               background: P.deep,
-              borderColor: P.border,
+              borderColor: P.border
             }}
           >
             {/* Cell Header */}
@@ -477,7 +480,9 @@ function CompactSkillMatrix() {
                     className="flex items-center gap-1.5 px-2 py-1 rounded-md cursor-default select-none transition-all duration-200 border"
                     style={{
                       background: isHovered ? `${color}12` : P.card,
-                      borderColor: isHovered ? color : "rgba(154, 167, 158, 0.08)",
+                      borderColor: isHovered
+                        ? color
+                        : "rgba(154, 167, 158, 0.08)",
                       boxShadow: isHovered ? `0 2px 8px ${color}10` : "none"
                     }}
                   >
@@ -1133,14 +1138,16 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [activeCat, setActiveCat] = useState<Cat>("All");
   const [activeProject, setActiveProject] = useState(PROJECTS[0]);
-  const [projectMediaIndex, setProjectMediaIndex] = useState(0); 
+  const [projectMediaIndex, setProjectMediaIndex] = useState(0);
   const [openBlog, setOpenBlog] = useState<BlogPost | null>(null);
   const [openReport, setOpenReport] = useState<string | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [showMoreLinks, setShowMoreLinks] = useState(false);
 
   // AUTOMATED METRICS ENGINE
-  const totalInternships = TIMELINE.filter((item) => item.type === "intern").length;
+  const totalInternships = TIMELINE.filter(
+    (item) => item.type === "intern"
+  ).length;
   const totalProjects = PROJECTS.length;
   const totalHackathons = COMPETITIONS.length;
   const totalCertifications = CERTIFICATIONS.length;
@@ -1149,11 +1156,13 @@ export default function App() {
   const yearsInField = (() => {
     const eduItems = TIMELINE.filter((item) => item.type === "edu");
     if (eduItems.length === 0) return 4; // Intelligent hard-coded baseline fallback
-    
-    const years = eduItems.map((item) => {
-      const match = item.period.match(/\b(20\d{2})\b/);
-      return match ? parseInt(match[1], 10) : null;
-    }).filter((y): y is number => y !== null);
+
+    const years = eduItems
+      .map((item) => {
+        const match = item.period.match(/\b(20\d{2})\b/);
+        return match ? parseInt(match[1], 10) : null;
+      })
+      .filter((y): y is number => y !== null);
 
     if (years.length === 0) return 4;
     const startYear = Math.min(...years);
@@ -1330,24 +1339,87 @@ export default function App() {
                     </div>
 
                     {/* DENSE HIGH-IMPACT AUTOMATED METRICS ROW  */}
-                    <div 
+                    <div
                       className="grid grid-cols-3 gap-2 mt-5 p-2 rounded-xl border border-dashed text-center"
-                      style={{ 
-                        background: "rgba(0,0,0,0.15)", 
-                        borderColor: P.border 
+                      style={{
+                        background: "rgba(0,0,0,0.15)",
+                        borderColor: P.border
                       }}
                     >
                       <div style={{ borderLeft: `1px solid ${P.border}` }}>
-                        <p style={{ color: P.cream, fontSize: 18, fontFamily: "'JetBrains Mono', monospace", fontWeight: 800, lineHeight: 1 }}>{totalInternships}</p> 
-                        <p style={{ color: P.muted, fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 2 }}>Internships</p>
+                        <p
+                          style={{
+                            color: P.cream,
+                            fontSize: 18,
+                            fontFamily: "'JetBrains Mono', monospace",
+                            fontWeight: 800,
+                            lineHeight: 1
+                          }}
+                        >
+                          {totalInternships}
+                        </p>
+                        <p
+                          style={{
+                            color: P.muted,
+                            fontSize: 9,
+                            fontWeight: 700,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.05em",
+                            marginTop: 2
+                          }}
+                        >
+                          Internships
+                        </p>
                       </div>
                       <div style={{ borderLeft: `1px solid ${P.border}` }}>
-                        <p style={{ color: P.cream, fontSize: 18, fontFamily: "'JetBrains Mono', monospace", fontWeight: 800, lineHeight: 1 }}>{totalCertifications}</p> 
-                        <p style={{ color: P.muted, fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 2 }}>Certs</p> 
+                        <p
+                          style={{
+                            color: P.cream,
+                            fontSize: 18,
+                            fontFamily: "'JetBrains Mono', monospace",
+                            fontWeight: 800,
+                            lineHeight: 1
+                          }}
+                        >
+                          {totalCertifications}
+                        </p>
+                        <p
+                          style={{
+                            color: P.muted,
+                            fontSize: 9,
+                            fontWeight: 700,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.05em",
+                            marginTop: 2
+                          }}
+                        >
+                          Certs
+                        </p>
                       </div>
                       <div style={{ borderLeft: `1px solid ${P.border}` }}>
-                        <p style={{ color: P.cream, fontSize: 18, fontFamily: "'JetBrains Mono', monospace", fontWeight: 800, lineHeight: 1 }}>{totalHackathons}</p> 
-                        <p style={{ color: P.muted, fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 2 }}>Hackathons</p>
+                        <p
+                          style={{
+                            color: P.cream,
+                            fontSize: 18,
+                            fontFamily: "'JetBrains Mono', monospace",
+                            fontWeight: 800,
+                            lineHeight: 1
+                          }}
+                        >
+                          {totalHackathons}
+                        </p>
+                        <p
+                          style={{
+                            color: P.muted,
+                            fontSize: 9,
+                            fontWeight: 700,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.05em",
+                            marginTop: 2
+                          }}
+                        >
+                          Hackathons
+                        </p>
                       </div>
                     </div>
 
@@ -1601,7 +1673,6 @@ export default function App() {
               {/* RIGHT COLUMN */}
               <main className="flex-1 lg:h-full lg:overflow-y-auto relative">
                 <div className="flex flex-col gap-5 p-5">
-                  
                   {/* BEAUTIFIED CORE SKILLS MATRIX CARD */}
                   <BentoCard>
                     <Label icon={Boxes} text="Core Ecosystem Stack" />
@@ -1770,8 +1841,12 @@ export default function App() {
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm transition-transform duration-200 hover:scale-102"
                                 style={{
-                                  background: activeProject.liveUrl ? P.deep : P.accent,
-                                  border: activeProject.liveUrl ? `1px solid ${P.border}` : "none",
+                                  background: activeProject.liveUrl
+                                    ? P.deep
+                                    : P.accent,
+                                  border: activeProject.liveUrl
+                                    ? `1px solid ${P.border}`
+                                    : "none",
                                   color: activeProject.liveUrl ? P.cream : P.bg,
                                   minHeight: 48,
                                   fontSize: 14

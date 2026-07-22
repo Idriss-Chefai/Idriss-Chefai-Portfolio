@@ -1,4 +1,4 @@
-export type Cat = "All" | "Games" | "Web" | "Mobile" | "AI" | "Software"|"Art";
+export type Cat = "All" | "Games" | "Web" | "Mobile" | "AI" | "Software"|"Art"|"UI/UX";
 
 export type MediaItem = {
   type: "video" | "image";
@@ -31,6 +31,7 @@ export type TimelineItem = {
   current?: boolean;
   highlights: string[];
   tech?: string[];
+  projectName?: string;
 };
 
 export type BlogPost = {

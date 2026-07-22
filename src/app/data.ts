@@ -10,7 +10,7 @@ export const PROFILE = {
   bio: "I build immersive games and scalable applications. From interactive gameplay mechanics to robust backends — I turn concepts into working products.",
   email: "idriss@example.com", // TODO: replace with your real contact email
   avatar: "./src/content/.images/professional img.jpeg",
-  resumeFile: "/Idriss_s_Resume_2025 v2.pdf",
+  resumeFile: "/src/content/.resume/Idriss_s_Resume_2025 v2.pdf",
   resumeDownloadName: "Idriss_Chefai_Resume.pdf",
   location: "Tunis, Tunisia",
   availability: "Open to Opportunities",
@@ -18,15 +18,14 @@ export const PROFILE = {
 
 // 2. Social Media Links
 export const SOCIALS = [
-  { label: "GitHub", handle: "@idriss-chefai", url: "...", color: "#24292e" },
+  { label: "GitHub", handle: "@idriss-chefai", url: "https://github.com/Idriss-Chefai", color: "#24292e" },
   { label: "LinkedIn", handle: "@idriss-chefai", url: "https://www.linkedin.com/in/idriss-chefai/", color: "#0077b5" },
-  { label: "Instagram", handle: "@idriss-chefai", url: "...", color: "#e1306c" },
+  { label: "Instagram", handle: "@idriss-chefai", url: "https://www.instagram.com/_idriss_c_/", color: "#e1306c" },
   // Everything below here stays tucked away dynamically!
-  { label: "GitLab", handle: "@idriss-chefai", url: "...", color: "#fc6d26" },
-  { label: "LeetCode", handle: "@idriss-chefai", url: "...", color: "#f89f1b" },
-  { label: "Codeforces", handle: "@idriss-chefai", url: "...", color: "#3182ce" },
-  { label: "Facebook", handle: "@idriss-chefai", url: "...", color: "#1877f2" },
-  { label: "WhatsApp", handle: "@idriss-chefai", url: "...", color: "#25d366" },
+  { label: "GitLab", handle: "@idriss-chefai", url: "https://gitlab.com/Idriss-Chefai", color: "#fc6d26" },
+  { label: "LeetCode", handle: "@idriss-chefai", url: "https://leetcode.com/u/Namidid/", color: "#f89f1b" },
+  { label: "Codeforces", handle: "@idriss-chefai", url: "https://codeforces.com/profile/Idriss_Chefai", color: "#3182ce" },
+  { label: "Facebook", handle: "@idriss-chefai", url: "https://www.facebook.com/idriss.chefai/", color: "#1877f2" },
 ];
 
 // 3. Re-exporting Types and Large Data Chunks
@@ -38,7 +37,7 @@ export {COMPETITIONS} from "./competitions"; // Kept completely in competitions.
 export const BLOGS = MD_BLOGS;         // Kept completely in blog.ts / markdown files!
 
 // 4. Category Array (Runtime array for App.tsx's filter buttons)
-export const CATS: Cat[] = ["All", "Games", "Web", "Mobile", "AI", "Software"];
+export const CATS: Cat[] = ["All", "Games", "Web", "Mobile", "AI", "Software","Art","UI/UX"];
 
 // 5. Skills Marquee List
 export const SKILLS = [

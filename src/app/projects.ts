@@ -11,16 +11,18 @@ export const PROJECTS: Project[] = [
     highlights: [
       "High-speed tactical gameplay system built specifically for the Voidrunner technical test",
       "Programmed advanced responsive movement mechanics alongside reactive level entities",
-      "Produced a polished technical test showcase demonstrating optimized gameplay execution and system stability",
+      "Produced a polished technical test showcase demonstrating optimized gameplay execution and system stability"
     ],
     tech: ["C#", "Unity", "Advanced Character Controller", "Optimization"],
-    media: [{
+    media: [
+      {
         type: "video",
-        thumb: "/assets/thumbnails/protect_white_house.png",
+        thumb: "src/content/.projects/VoidRunner/1.png",
         label: "Gameplay Demo",
-        embedUrl: "https://drive.google.com/file/d/1JoI-65W0MYumv_NUeM40xrWlrgOSmAu9/view?usp=drive_link",
-      },
-    ],
+        embedUrl:
+          "https://drive.google.com/file/d/1JoI-65W0MYumv_NUeM40xrWlrgOSmAu9/view?usp=drive_link"
+      }
+    ]
   },
   {
     id: 2,
@@ -31,10 +33,16 @@ export const PROJECTS: Project[] = [
     highlights: [
       "Scalable multiplayer infrastructure managing synchronized game world states",
       "Implemented dedicated authoritative server code minimizing data payload overhead",
-      "Integrated client-side prediction algorithms and smooth interpolation to counteract latency spikes",
+      "Integrated client-side prediction algorithms and smooth interpolation to counteract latency spikes"
     ],
     tech: ["C#", "Unity", "Multiplayer Networking", "Physics"],
-    media: [{ type: "video", thumb: "/assets/thumbnails/game_online.png", label: "Network Debugger" }],
+    media: [ {
+        type: "video",
+        thumb: "/src/content/.projects/Rust&Run/Gemini_Generated_Image_.png",
+        label: "Gameplay Demo",
+        embedUrl:
+          "https://drive.google.com/file/d/1ovY12X5qyEUk_fNz7g-pPZnhTwpBRnuN/view?usp=sharing"
+      }]
   },
   {
     id: 3,
@@ -46,9 +54,10 @@ export const PROJECTS: Project[] = [
       "4-player cooperative multiplayer horror experience designed within Unity",
       "Engineered an efficient network-synced character customization workflow built around dynamic clothing mesh swapping",
       "Constructed custom placement logic for real-time multiplayer building and barricading mechanics",
+      "Done survival mechanics and advanced first player movement and synchronisation"
     ],
     tech: ["C#", "Unity", "Netcode for GameObjects", "Blender"],
-    media: [{ type: "image", thumb: "/assets/thumbnails/the_reset.png", label: "Gameplay Alpha" }],
+    media: []
   },
   {
     id: 4,
@@ -61,32 +70,46 @@ export const PROJECTS: Project[] = [
       "Manage resources like fuel and wood to build defensive stations and turrets",
       "8 levels with multiple zombie types and distinct behaviors",
       "Resource management, cooldown systems, and card-based building UI",
-      "3D assets modeled in Blender with a cartoony visual style",
+      "3D assets modeled in Blender with a cartoony visual style"
     ],
     tech: ["C#", "Unity", "Blender"],
     media: [
       {
         type: "video",
-        thumb: "/assets/thumbnails/protect_white_house.png",
+        thumb: "/src/content/.projects/protectThewhiteHouse/Capture d'écran 2026-07-22 122926.png",
         label: "Gameplay Demo",
-        embedUrl: "https://drive.google.com/file/d/1uDiRH4Zy1p41Wrlm_5l-ctf8cMLgBN7H/view?usp=sharing",
-      },
-    ],
+        embedUrl:
+          "https://drive.google.com/file/d/1uDiRH4Zy1p41Wrlm_5l-ctf8cMLgBN7H/view?usp=sharing"
+      }
+    ]
   },
-{
+  {
     id: 5,
     name: "AI Industrial Ad Campaign",
-    cat: ["AI", "Art"], 
+    cat: ["AI", "Art"],
     role: "AI Media Specialist / Producer",
     period: "2026",
     highlights: [
       "Produced a high-impact social media video advertisement (Instagram Reel/TikTok format) targeting B2B industrial growth within a strict 24-hour sprint",
       "Orchestrated a pipeline of diverse generative AI tools to rapidly iterate through conceptual scripting, professional voiceover generation, and cinematic scene layouts",
       "Directed the visual tone and pacing to effectively communicate the scaling potential of industrial land for incoming enterprises",
-      "Aggregated, upscaled, and edited AI-generated video segments into a cohesive, high-retention marketing asset tailored for mobile feeds",
+      "Aggregated, upscaled, and edited AI-generated video segments into a cohesive, high-retention marketing asset tailored for mobile feeds"
     ],
-    tech: ["Generative AI Video Tools", "AI Voice Synthesis", "Video Editing Systems", "Prompt Engineering"],
-    media: [{ type: "video", thumb: "/assets/thumbnails/ai_hackathon.png", label: "Ad Campaign Reel Preview" , embedUrl: "https://drive.google.com/file/d/1-KkXVC0YuTeiZJd8LhBxt7hItvE2U0l6/view?usp=sharing" }],
+    tech: [
+      "Generative AI Video Tools",
+      "AI Voice Synthesis",
+      "Video Editing Systems",
+      "Prompt Engineering"
+    ],
+    media: [
+      {
+        type: "video",
+        thumb: "/assets/thumbnails/ai_hackathon.png",
+        label: "Ad Campaign Reel Preview",
+        embedUrl:
+          "https://drive.google.com/file/d/1-KkXVC0YuTeiZJd8LhBxt7hItvE2U0l6/view?usp=sharing"
+      }
+    ]
   },
   {
     id: 6,
@@ -97,19 +120,49 @@ export const PROJECTS: Project[] = [
     highlights: [
       "Rapidly prototyped a game within a strict 48-hour development window conforming to the event theme",
       "Structured lightweight components ensuring core loop stability and functional features on a tight deadline",
-      "Iterated rapidly on intuitive mechanics using customized asset templates and flexible logic components",
+      "Iterated rapidly on intuitive mechanics using customized asset templates and flexible logic components"
     ],
     tech: ["C#", "Unity", "Rapid Prototyping"],
-    media: [{ type: "video", thumb: "src/content/.projects/GGJ26/1.png", label: "Jam Entry Build",embedUrl:"https://drive.google.com/file/d/1-xlgg5seTGxJ_q5P2TEcoTu5gnq2Kqu2/view?usp=drive_link"},
+    media: [
+      {
+        type: "video",
+        thumb: "src/content/.projects/GGJ26/1.png",
+        label: "Jam Entry Build",
+        embedUrl:
+          "https://drive.google.com/file/d/1-xlgg5seTGxJ_q5P2TEcoTu5gnq2Kqu2/view?usp=drive_link"
+      },
 
-      { type: "image", thumb: "src/content/.projects/GGJ26/1.png", label: "Screenshot" },
-      { type: "image", thumb: "src/content/.projects/GGJ26/1.png", label: "Screenshot" },
-      { type: "image", thumb: "src/content/.projects/GGJ26/3.png", label: "Screenshot" },
-      { type: "image", thumb: "src/content/.projects/GGJ26/4.png", label: "Screenshot" },
-      { type: "image", thumb: "src/content/.projects/GGJ26/5.png", label: "Screenshot" },
-      { type: "image", thumb: "src/content/.projects/GGJ26/5.png", label: "Screenshot" },
-
-    ],
+      {
+        type: "image",
+        thumb: "src/content/.projects/GGJ26/1.png",
+        label: "Screenshot"
+      },
+      {
+        type: "image",
+        thumb: "src/content/.projects/GGJ26/1.png",
+        label: "Screenshot"
+      },
+      {
+        type: "image",
+        thumb: "src/content/.projects/GGJ26/3.png",
+        label: "Screenshot"
+      },
+      {
+        type: "image",
+        thumb: "src/content/.projects/GGJ26/4.png",
+        label: "Screenshot"
+      },
+      {
+        type: "image",
+        thumb: "src/content/.projects/GGJ26/5.png",
+        label: "Screenshot"
+      },
+      {
+        type: "image",
+        thumb: "src/content/.projects/GGJ26/5.png",
+        label: "Screenshot"
+      }
+    ]
   },
   {
     id: 7,
@@ -120,10 +173,17 @@ export const PROJECTS: Project[] = [
     highlights: [
       "Immersive virtual reality sports simulation built with Unity VR Interaction Toolkit",
       "Implemented physics-based haptic feedback and collision tracking to calculate punch velocity",
-      "Designed fully optimized visual environments maintaining stable high frame rates for VR headset comfort",
+      "Designed fully optimized visual environments maintaining stable high frame rates for VR headset comfort"
     ],
     tech: ["C#", "Unity", "OpenXR", "VR Interaction Toolkit"],
-    media: [{ type: "image", thumb: "/assets/thumbnails/vr_boxing.png", label: "VR Gameplay" }],
+    media: [
+      {
+        type: "video",
+        thumb: "/src/content/.projects/Mecha VR/DESIGN VRGAME.png",
+        label: "Trailer",
+        embedUrl:"https://drive.google.com/file/d/1tiD6SR5jQzNv7P4XQI91XTtNMqb41s_p/view?usp=sharing"
+      }
+    ]
   },
 
   // --- 2025: WEB, MOBILE & FREELANCE ---
@@ -136,7 +196,7 @@ export const PROJECTS: Project[] = [
     highlights: [
       "Collaborative platform with two backends (Java and Symfony) sharing one MySQL database",
       "Campsite discovery and reservations",
-      "User reviews, an integrated gear store, and social features",
+      "User reviews, an integrated gear store, and social features"
     ],
     tech: ["JavaFX", "Java", "Symfony", "MySQL"],
     media: [
@@ -144,9 +204,10 @@ export const PROJECTS: Project[] = [
         type: "video",
         thumb: "/assets/thumbnails/camping_platform.png",
         label: "Platform Demo",
-        embedUrl: "https://drive.google.com/file/d/1mj54WLUylubDGtH2HKPibh8MUdFJANM4/view?usp=sharing",
-      },
-    ],
+        embedUrl:
+          "https://drive.google.com/file/d/1mj54WLUylubDGtH2HKPibh8MUdFJANM4/view?usp=sharing"
+      }
+    ]
   },
   {
     id: 9,
@@ -157,11 +218,17 @@ export const PROJECTS: Project[] = [
     highlights: [
       "Responsive interactive web application engineered for English educational workflows and reading resources",
       "Implemented modular layouts ensuring cross-device presentation fluidly scaling from desktop to mobile viewports",
-      "Optimized DOM structures and light media delivery pipelines to minimize asset overhead and page load speeds",
+      "Optimized DOM structures and light media delivery pipelines to minimize asset overhead and page load speeds"
     ],
     tech: ["React", "TypeScript", "Tailwind CSS"],
     liveUrl: "https://idriss-chefai.github.io/Pure-Change-Official-Website/",
-    media: [{ type: "image", thumb: "/assets/thumbnails/english_platform.png", label: "Desktop Interface" }],
+    media: [
+      {
+        type: "image",
+        thumb: "/assets/thumbnails/english_platform.png",
+        label: "Desktop Interface"
+      }
+    ]
   },
   {
     id: 10,
@@ -172,9 +239,16 @@ export const PROJECTS: Project[] = [
     highlights: [
       "Modeled a low-poly stylized character assets keeping geometry optimized for realtime deployment",
       "Rigged structural vertex weight groups and skeletal constraints to achieve clean, natural organic deformations",
-      "Worked on a jump animation"],
+      "Worked on a jump animation"
+    ],
     tech: ["Blender", "Mixamo", "Stylized Low-Poly Art"],
-    media: [{ type: "image", thumb: "/assets/thumbnails/blender_showcase.png", label: "Blender Viewport Rig" }],
+    media: [
+      {
+        type: "image",
+        thumb: "/assets/thumbnails/blender_showcase.png",
+        label: "Blender Viewport Rig"
+      }
+    ]
   },
   {
     id: 11,
@@ -185,24 +259,73 @@ export const PROJECTS: Project[] = [
     highlights: [
       "Engineered tailored desktop client software providing practical administrative toolsets for student cohorts",
       "Constructed structural UI layers via JavaFX using MVC architectures separating view components from DB queries",
-      "Integrated structural validation methods handling error logging alongside automated analytical data summaries",
+      "Integrated structural validation methods handling error logging alongside automated analytical data summaries"
     ],
     tech: ["Java", "JavaFX", "MySQL", "Maven"],
-    media: [{ type: "image", thumb: "/assets/thumbnails/javafx_applications.png", label: "Desktop Application" }],
+    media: [
+      {
+        type: "video",
+        thumb: "/assets/thumbnails/javafx_applications.png",
+        label: "Desktop Application",
+        embedUrl : "https://drive.google.com/file/d/1mTPAAxXamJcz4rW0qqIUDvZDgimbOI-6/view?usp=sharing"
+      }
+    ]
   },
   {
-    id: 12,
-    name: "Cross-Platform Student Portals",
-    cat: ["Mobile"],
-    role: "Freelance FlutterFlow Developer",
+    id: 12, // Update this ID based on your existing project list
+    name: "GAIN GymApp",
+    cat: ["Mobile", "UI/UX"], // Adjust categories to match your Cat[] type definition
+    role: "Lead Mobile Developer",
     period: "2025",
     highlights: [
-      "Built multi-platform mobile application instances tailored to academic record lookups and calendar tracking",
-      "Configured integrated cloud bindings for instant state synchronization between active users",
-      "Structured lightweight layout controls enabling smooth visual navigation transitions across target hardware platforms",
+      "Architected an all-in-one fitness ecosystem featuring real-time health metrics like step tracking and calorie counters.",
+      "Built a complete course and event management module with dynamic form validations, date-time pickers, and admin controls.",
+      "Integrated a localized e-commerce marketplace for sports equipment and apparel alongside a persistent shopping cart."
     ],
-    tech: ["FlutterFlow", "Firebase", "Cross-Platform Mobile UI"],
-    media: [{ type: "image", thumb: "/assets/thumbnails/flutterflow_portals.png", label: "Mobile Dashboard View" }],
+    tech: ["FlutterFlow", "Dart", "Firebase", "UI/UX Design"],
+    media: [
+      {
+        type: "image",
+        thumb: "/src/content/.projects/Gain GymApp/1.png",
+        label: "Login Screen"
+      },
+      {
+        type: "image",
+        thumb: "/src/content/.projects/Gain GymApp/2.png",
+        label: "Sign in screen"
+      },
+      {
+        type: "image",
+        thumb: "/src/content/.projects/Gain GymApp/3.png",
+        label: "Dashboard"
+      },
+      {
+        type: "image",
+        thumb: "/src/content/.projects/Gain GymApp/4.png",
+        label: "Dashboard"
+      },
+      {
+        type: "image",
+        thumb: "/src/content/.projects/Gain GymApp/5.png",
+        label: "Dashboard"
+      },
+      {
+        type: "image",
+        thumb: "/src/content/.projects/Gain GymApp/6.png",
+        label: "Dashboard"
+      },
+      {
+        type: "image",
+        thumb: "/src/content/.projects/Gain GymApp/7.png",
+        label: "Dashboard"
+      },
+      {
+        type: "image",
+        thumb: "/src/content/.projects/Gain GymApp/8.png",
+        label: "Dashboard"
+      }
+    ],
+    reportUrl: ""
   },
   {
     id: 13,
@@ -213,15 +336,31 @@ export const PROJECTS: Project[] = [
     highlights: [
       "Multi-level 2D puzzle game with increasing difficulty",
       "Smooth character animations and interactive puzzle mechanics",
-      "Built end-to-end in Java with JavaFX — First game project completed",
+      "Built end-to-end in Java with JavaFX — First game project completed"
     ],
     tech: ["Java", "JavaFX", "Maven"],
     media: [
-      { type: "image", thumb: "src/content/.projects/adventure_game/1.png", label: "Tutorial" },
-      { type: "image", thumb: "src/content/.projects/adventure_game/2.png", label: "Level 1" },
-      { type: "image", thumb: "src/content/.projects/adventure_game/3.png", label: "Level 2" },
-      { type: "image", thumb: "src/content/.projects/adventure_game/4.png", label: "Dialogue System Showcase" },
-    ],
+      {
+        type: "image",
+        thumb: "src/content/.projects/adventure_game/1.png",
+        label: "Tutorial"
+      },
+      {
+        type: "image",
+        thumb: "src/content/.projects/adventure_game/2.png",
+        label: "Level 1"
+      },
+      {
+        type: "image",
+        thumb: "src/content/.projects/adventure_game/3.png",
+        label: "Level 2"
+      },
+      {
+        type: "image",
+        thumb: "src/content/.projects/adventure_game/4.png",
+        label: "Dialogue System Showcase"
+      }
+    ]
   },
 
   // --- 2023 – 2024: ACADEMIC & FOUNDATIONAL PROJECTS ---
@@ -234,17 +373,18 @@ export const PROJECTS: Project[] = [
     highlights: [
       "React Native app for diabetes tracking",
       "Patients track blood sugar levels, medications, and meals",
-      "Doctor-facing tools to manage patient profiles and appointments",
+      "Doctor-facing tools to manage patient profiles and appointments"
     ],
     tech: ["React Native", "Node.js", "Express", "MySQL"],
     media: [
       {
         type: "video",
-        thumb: "/assets/thumbnails/dia_track.png",
+        thumb: "/src/content/.projects/Diatrack/1.png",
         label: "App Demo",
-        embedUrl: "https://drive.google.com/file/d/1nlQ3CdGFS0zt7D07lCTblcwiJ3nQs2XU/view?usp=sharing",
-      },
-    ],
+        embedUrl:
+          "https://drive.google.com/file/d/1nlQ3CdGFS0zt7D07lCTblcwiJ3nQs2XU/view?usp=sharing"
+      }
+    ]
   },
   {
     id: 15,
@@ -255,17 +395,40 @@ export const PROJECTS: Project[] = [
     highlights: [
       "Python ML model for stock market analysis developed as part of an academic graduation curriculum",
       "Data collection, preprocessing, and feature engineering",
-      "Model training with scikit-learn and TensorFlow",
+      "Model training with scikit-learn and TensorFlow"
     ],
-    tech: ["Python", "scikit-learn", "TensorFlow", "Angular", "Flask", "Pandas", "NumPy"],
+    tech: [
+      "Python",
+      "scikit-learn",
+      "TensorFlow",
+      "Angular",
+      "Flask",
+      "Pandas",
+      "NumPy"
+    ],
     media: [
-      { type: "image", thumb: "/src/content/.projects/stock_market_analysis/1.png", label: "Analysis Dashboard" },
-      { type: "image", thumb: "/src/content/.projects/stock_market_analysis/2.png", label: "Analysis Dashboard" },
-      { type: "image", thumb: "/src/content/.projects/stock_market_analysis/3.png", label: "Analysis Dashboard" },
-      { type: "image", thumb: "/src/content/.projects/stock_market_analysis/4.png", label: "Analysis Dashboard" },
-
+      {
+        type: "image",
+        thumb: "/src/content/.projects/stock_market_analysis/1.png",
+        label: "Analysis Dashboard"
+      },
+      {
+        type: "image",
+        thumb: "/src/content/.projects/stock_market_analysis/2.png",
+        label: "Analysis Dashboard"
+      },
+      {
+        type: "image",
+        thumb: "/src/content/.projects/stock_market_analysis/3.png",
+        label: "Analysis Dashboard"
+      },
+      {
+        type: "image",
+        thumb: "/src/content/.projects/stock_market_analysis/4.png",
+        label: "Analysis Dashboard"
+      }
     ],
-    reportUrl: "/src/content/.reports/Rapport_ISTIC_PFE_2023_2024.pdf",
+    reportUrl: "/src/content/.reports/Rapport_ISTIC_PFE_2023_2024.pdf"
   },
   {
     id: 16,
@@ -276,19 +439,43 @@ export const PROJECTS: Project[] = [
     highlights: [
       "Maintenance and asset management software built in Java",
       "Equipment inventory, maintenance schedules, and work orders",
-      "Preventive maintenance planning and failure tracking",
+      "Preventive maintenance planning and failure tracking"
     ],
     tech: ["Java", "Swing/JavaFX", "MySQL", "JDBC", "Maven"],
     media: [
-      { type: "image", thumb: "/src/content/.projects/gestion_maintenance/1.png", label: "Dashboard" },
-      { type: "image", thumb: "/src/content/.projects/gestion_maintenance/2.png", label: "Dashboard" },
-      { type: "image", thumb: "/src/content/.projects/gestion_maintenance/3.png", label: "Dashboard" },
-      { type: "image", thumb: "/src/content/.projects/gestion_maintenance/4.png", label: "Dashboard" },
-      { type: "image", thumb: "/src/content/.projects/gestion_maintenance/5.png", label: "Dashboard" },
-      { type: "image", thumb: "/src/content/.projects/gestion_maintenance/6.png", label: "Dashboard" },
-      
+      {
+        type: "image",
+        thumb: "/src/content/.projects/gestion_maintenance/1.png",
+        label: "Dashboard"
+      },
+      {
+        type: "image",
+        thumb: "/src/content/.projects/gestion_maintenance/2.png",
+        label: "Dashboard"
+      },
+      {
+        type: "image",
+        thumb: "/src/content/.projects/gestion_maintenance/3.png",
+        label: "Dashboard"
+      },
+      {
+        type: "image",
+        thumb: "/src/content/.projects/gestion_maintenance/4.png",
+        label: "Dashboard"
+      },
+      {
+        type: "image",
+        thumb: "/src/content/.projects/gestion_maintenance/5.png",
+        label: "Dashboard"
+      },
+      {
+        type: "image",
+        thumb: "/src/content/.projects/gestion_maintenance/6.png",
+        label: "Dashboard"
+      }
     ],
-    reportUrl: "/src/content/.reports/Rapport_Projet_Java_Gestion_Maintenance.pdf",
+    reportUrl:
+      "/src/content/.reports/Rapport_Projet_Java_Gestion_Maintenance.pdf"
   },
   {
     id: 17,
@@ -299,9 +486,15 @@ export const PROJECTS: Project[] = [
     highlights: [
       "Electronics e-commerce site built on the MERN stack",
       "JWT-based user authentication",
-      "Product catalog, shopping cart, and secure checkout flow",
+      "Product catalog, shopping cart, and secure checkout flow"
     ],
     tech: ["MongoDB", "Express.js", "React.js", "Node.js", "JWT"],
-    media: [{ type: "image", thumb: "/assets/thumbnails/ecommerce.png", label: "Overview" }],
-  },
+    media: [
+      {
+        type: "image",
+        thumb: "/assets/thumbnails/ecommerce.png",
+        label: "Overview"
+      }
+    ]
+  }
 ];

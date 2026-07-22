@@ -33,6 +33,7 @@ export const TIMELINE: TimelineItem[] = [
     location: "Tunis, Tunisia",
     period: "Oct 2024 – Dec 2024",
     type: "intern",
+    projectName: "Dia-track",
     highlights: [
       "Built Dia-track, a React Native app for diabetes tracking",
       "Added management features for doctors, appointments, and patient profiles",
@@ -55,6 +56,7 @@ export const TIMELINE: TimelineItem[] = [
     location: "Centre Urbain Nord, Tunisia",
     period: "Feb 2024 – May 2024",
     type: "intern",
+    projectName: "Stock Market Analysis ML Model",
     highlights: [
       "Performed stock market analysis and built a Python ML model",
       "Deployed the model with an Angular frontend and Flask backend",
@@ -67,6 +69,7 @@ export const TIMELINE: TimelineItem[] = [
     location: "Soliman, Tunisia",
     period: "Jun 2023 – Sep 2023",
     type: "intern",
+    projectName: "Gestion Maintenance",
     highlights: [
       "Built equipment management software in Java with MySQL",
       "Designed the database schema and optimized data storage",
