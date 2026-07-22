@@ -17,7 +17,7 @@ export const PROJECTS: Project[] = [
     media: [
       {
         type: "video",
-        thumb: "src/content/.projects/VoidRunner/1.png",
+        thumb: "src/content/projects/VoidRunner/1.png",
         label: "Gameplay Demo",
         embedUrl:
           "https://drive.google.com/file/d/1JoI-65W0MYumv_NUeM40xrWlrgOSmAu9/view?usp=drive_link"
@@ -38,7 +38,7 @@ export const PROJECTS: Project[] = [
     tech: ["C#", "Unity", "Multiplayer Networking", "Physics"],
     media: [ {
         type: "video",
-        thumb: "/src/content/.projects/Rust&Run/Gemini_Generated_Image_.png",
+        thumb: "/content/projects/Rust&Run/Gemini_Generated_Image_.png",
         label: "Gameplay Demo",
         embedUrl:
           "https://drive.google.com/file/d/1ovY12X5qyEUk_fNz7g-pPZnhTwpBRnuN/view?usp=sharing"
@@ -76,7 +76,7 @@ export const PROJECTS: Project[] = [
     media: [
       {
         type: "video",
-        thumb: "/src/content/.projects/protectThewhiteHouse/Capture d'écran 2026-07-22 122926.png",
+        thumb: "/content/projects/protectThewhiteHouse/Capture d'écran 2026-07-22 122926.png",
         label: "Gameplay Demo",
         embedUrl:
           "https://drive.google.com/file/d/1uDiRH4Zy1p41Wrlm_5l-ctf8cMLgBN7H/view?usp=sharing"
@@ -126,7 +126,7 @@ export const PROJECTS: Project[] = [
     media: [
       {
         type: "video",
-        thumb: "src/content/.projects/GGJ26/1.png",
+        thumb: "src/content/projects/GGJ26/1.png",
         label: "Jam Entry Build",
         embedUrl:
           "https://drive.google.com/file/d/1-xlgg5seTGxJ_q5P2TEcoTu5gnq2Kqu2/view?usp=drive_link"
@@ -134,32 +134,32 @@ export const PROJECTS: Project[] = [
 
       {
         type: "image",
-        thumb: "src/content/.projects/GGJ26/1.png",
+        thumb: "src/content/projects/GGJ26/1.png",
         label: "Screenshot"
       },
       {
         type: "image",
-        thumb: "src/content/.projects/GGJ26/1.png",
+        thumb: "src/content/projects/GGJ26/1.png",
         label: "Screenshot"
       },
       {
         type: "image",
-        thumb: "src/content/.projects/GGJ26/3.png",
+        thumb: "src/content/projects/GGJ26/3.png",
         label: "Screenshot"
       },
       {
         type: "image",
-        thumb: "src/content/.projects/GGJ26/4.png",
+        thumb: "src/content/projects/GGJ26/4.png",
         label: "Screenshot"
       },
       {
         type: "image",
-        thumb: "src/content/.projects/GGJ26/5.png",
+        thumb: "src/content/projects/GGJ26/5.png",
         label: "Screenshot"
       },
       {
         type: "image",
-        thumb: "src/content/.projects/GGJ26/5.png",
+        thumb: "src/content/projects/GGJ26/5.png",
         label: "Screenshot"
       }
     ]
@@ -179,7 +179,7 @@ export const PROJECTS: Project[] = [
     media: [
       {
         type: "video",
-        thumb: "/src/content/.projects/Mecha VR/DESIGN VRGAME.png",
+        thumb: "/content/projects/Mecha VR/DESIGN VRGAME.png",
         label: "Trailer",
         embedUrl:"https://drive.google.com/file/d/1tiD6SR5jQzNv7P4XQI91XTtNMqb41s_p/view?usp=sharing"
       }
@@ -286,42 +286,42 @@ export const PROJECTS: Project[] = [
     media: [
       {
         type: "image",
-        thumb: "/src/content/.projects/Gain GymApp/1.png",
+        thumb: "/content/projects/Gain GymApp/1.png",
         label: "Login Screen"
       },
       {
         type: "image",
-        thumb: "/src/content/.projects/Gain GymApp/2.png",
+        thumb: "/content/projects/Gain GymApp/2.png",
         label: "Sign in screen"
       },
       {
         type: "image",
-        thumb: "/src/content/.projects/Gain GymApp/3.png",
+        thumb: "/content/projects/Gain GymApp/3.png",
         label: "Dashboard"
       },
       {
         type: "image",
-        thumb: "/src/content/.projects/Gain GymApp/4.png",
+        thumb: "/content/projects/Gain GymApp/4.png",
         label: "Dashboard"
       },
       {
         type: "image",
-        thumb: "/src/content/.projects/Gain GymApp/5.png",
+        thumb: "/content/projects/Gain GymApp/5.png",
         label: "Dashboard"
       },
       {
         type: "image",
-        thumb: "/src/content/.projects/Gain GymApp/6.png",
+        thumb: "/content/projects/Gain GymApp/6.png",
         label: "Dashboard"
       },
       {
         type: "image",
-        thumb: "/src/content/.projects/Gain GymApp/7.png",
+        thumb: "/content/projects/Gain GymApp/7.png",
         label: "Dashboard"
       },
       {
         type: "image",
-        thumb: "/src/content/.projects/Gain GymApp/8.png",
+        thumb: "/content/projects/Gain GymApp/8.png",
         label: "Dashboard"
       }
     ],
@@ -342,22 +342,22 @@ export const PROJECTS: Project[] = [
     media: [
       {
         type: "image",
-        thumb: "src/content/.projects/adventure_game/1.png",
+        thumb: "src/content/projects/adventure_game/1.png",
         label: "Tutorial"
       },
       {
         type: "image",
-        thumb: "src/content/.projects/adventure_game/2.png",
+        thumb: "src/content/projects/adventure_game/2.png",
         label: "Level 1"
       },
       {
         type: "image",
-        thumb: "src/content/.projects/adventure_game/3.png",
+        thumb: "src/content/projects/adventure_game/3.png",
         label: "Level 2"
       },
       {
         type: "image",
-        thumb: "src/content/.projects/adventure_game/4.png",
+        thumb: "src/content/projects/adventure_game/4.png",
         label: "Dialogue System Showcase"
       }
     ]
@@ -379,7 +379,7 @@ export const PROJECTS: Project[] = [
     media: [
       {
         type: "video",
-        thumb: "/src/content/.projects/Diatrack/1.png",
+        thumb: "/content/projects/Diatrack/1.png",
         label: "App Demo",
         embedUrl:
           "https://drive.google.com/file/d/1nlQ3CdGFS0zt7D07lCTblcwiJ3nQs2XU/view?usp=sharing"
@@ -409,26 +409,26 @@ export const PROJECTS: Project[] = [
     media: [
       {
         type: "image",
-        thumb: "/src/content/.projects/stock_market_analysis/1.png",
+        thumb: "/content/projects/stock_market_analysis/1.png",
         label: "Analysis Dashboard"
       },
       {
         type: "image",
-        thumb: "/src/content/.projects/stock_market_analysis/2.png",
+        thumb: "/content/projects/stock_market_analysis/2.png",
         label: "Analysis Dashboard"
       },
       {
         type: "image",
-        thumb: "/src/content/.projects/stock_market_analysis/3.png",
+        thumb: "/content/projects/stock_market_analysis/3.png",
         label: "Analysis Dashboard"
       },
       {
         type: "image",
-        thumb: "/src/content/.projects/stock_market_analysis/4.png",
+        thumb: "/content/projects/stock_market_analysis/4.png",
         label: "Analysis Dashboard"
       }
     ],
-    reportUrl: "/src/content/.reports/Rapport_ISTIC_PFE_2023_2024.pdf"
+    reportUrl: "/content/reports/Rapport_ISTIC_PFE_2023_2024.pdf"
   },
   {
     id: 16,
@@ -445,37 +445,37 @@ export const PROJECTS: Project[] = [
     media: [
       {
         type: "image",
-        thumb: "/src/content/.projects/gestion_maintenance/1.png",
+        thumb: "/content/projects/gestion_maintenance/1.png",
         label: "Dashboard"
       },
       {
         type: "image",
-        thumb: "/src/content/.projects/gestion_maintenance/2.png",
+        thumb: "/content/projects/gestion_maintenance/2.png",
         label: "Dashboard"
       },
       {
         type: "image",
-        thumb: "/src/content/.projects/gestion_maintenance/3.png",
+        thumb: "/content/projects/gestion_maintenance/3.png",
         label: "Dashboard"
       },
       {
         type: "image",
-        thumb: "/src/content/.projects/gestion_maintenance/4.png",
+        thumb: "/content/projects/gestion_maintenance/4.png",
         label: "Dashboard"
       },
       {
         type: "image",
-        thumb: "/src/content/.projects/gestion_maintenance/5.png",
+        thumb: "/content/projects/gestion_maintenance/5.png",
         label: "Dashboard"
       },
       {
         type: "image",
-        thumb: "/src/content/.projects/gestion_maintenance/6.png",
+        thumb: "/content/projects/gestion_maintenance/6.png",
         label: "Dashboard"
       }
     ],
     reportUrl:
-      "/src/content/.reports/Rapport_Projet_Java_Gestion_Maintenance.pdf"
+      "/content/reports/Rapport_Projet_Java_Gestion_Maintenance.pdf"
   },
   {
     id: 17,
