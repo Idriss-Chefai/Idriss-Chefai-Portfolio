@@ -8,8 +8,8 @@ export const PROFILE = {
   initials: "IC",
   title: "Game Developer & Software Engineer",
   bio: "I build immersive games and scalable applications. From interactive gameplay mechanics to robust backends — I turn concepts into working products.",
-  email: "idriss@example.com", // TODO: replace with your real contact email
-  avatar: "./src/content/.images/professional img.jpeg",
+  email: "chefaidriss@gmail.com.", // TODO: replace with your real contact email
+  avatar: "/public/content/images/professional img.jpeg",
   resumeFile: "/src/content/.resume/Idriss_s_Resume_2025 v2.pdf",
   resumeDownloadName: "Idriss_Chefai_Resume.pdf",
   location: "Tunis, Tunisia",
