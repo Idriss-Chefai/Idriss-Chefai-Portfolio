@@ -10,7 +10,7 @@ export const PROFILE = {
   bio: "I build immersive games and scalable applications. From interactive gameplay mechanics to robust backends — I turn concepts into working products.",
   email: "chefaidriss@gmail.com.", // TODO: replace with your real contact email
   avatar: "/public/content/images/professional img.jpeg",
-  resumeFile: "/src/content/.resume/Idriss_s_Resume_2025 v2.pdf",
+  resumeFile: "/public/content/resume/Idriss_s_Resume_2026.pdf",
   resumeDownloadName: "Idriss_Chefai_Resume.pdf",
   location: "Tunis, Tunisia",
   availability: "Open to Opportunities",
@@ -42,7 +42,7 @@ export const CATS: Cat[] = ["All", "Games", "Web", "Mobile", "AI", "Software","A
 // 5. Skills Marquee List
 export const SKILLS = [
   "Python", "Java", "C", "C#", "C++", "JavaScript", "TypeScript",
-  "Unity", "Blender",
+  "Unity", "Unreal Engine", "Blender",
   "React", "Angular", "Node.js", "Flask", "Spring Boot", "Symfony", ".NET", "Flutter",
   "MySQL", "PostgreSQL", "MongoDB",
   "TensorFlow", "PyTorch", "scikit-learn", "Pandas",

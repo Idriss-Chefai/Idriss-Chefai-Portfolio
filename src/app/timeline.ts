@@ -5,7 +5,7 @@ export const TIMELINE: TimelineItem[] = [
     role: "Game & Mobile Developer Intern",
     org: "EventokenX",
     location: "Lyon, France",
-    period: "Summer 2026",
+    period: "Jul 2026 - Sep 2026",
     type: "intern",
     highlights: [
       "Built core gameplay systems in Unity: XP/levelling, combat and an interface-based skill VFX pipeline. Cut the main scene's ground mesh from ~399k to ~50k triangles",
