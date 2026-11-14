@@ -16,22 +16,25 @@ A high-fidelity, interactive bento-grid ecosystem engineered to showcase special
 
 ## 🛠️ Content Customization
 
-All data, media definitions, text records, and profile assets are managed cleanly inside a single configuration node: `src/data.ts`.
+Portfolio content is organized across the files in `src/app/`.
 
 ### 1. The Profile Identity
-Manage primary metadata, location arrays, email protocols, and resume tracking definitions directly inside the main data profile object.
+Manage primary metadata, location, email, avatar, and resume file details in the `PROFILE` object in `src/app/data.ts`. Files in `public/` are served from the site root, so use paths such as `/content/resume/your-resume.pdf` (not `/public/content/resume/your-resume.pdf`).
 
 ### 2. Upstream Social Networks
-Update the social links array. The interface automatically provisions the correct custom UI colors and branding iconography dynamically.
+Update the social links array in `src/app/data.ts`. The interface automatically provisions the correct custom UI colors and branding iconography dynamically.
 
-### 3. Injecting Project Records
+### 3. Skills
+Add or edit the grouped skill lists in `TECH_MATRIX` in `src/app/App.tsx`. These lists populate the "Core Ecosystem Stack" cards on the page.
+
+### 4. Injecting Project Records
 Each project item can be customized with:
 - Target categorical filters (`Games`, `Web`, `Mobile`, `AI`, `Software`)
 - Media hooks, game screenshots, or inline video embed tokens
 - Dynamic performance highlight lists
 - Specific paths linking to standalone PDF technical reports or game builds
 
-### 4. Competitions & Certifications
+### 5. Competitions & Certifications
 Insert verified competitive achievements and credential licensing details directly into the sidebar loops. 
 
 

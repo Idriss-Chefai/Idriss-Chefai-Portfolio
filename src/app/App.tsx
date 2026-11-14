@@ -92,7 +92,7 @@ export const TECH_MATRIX = [
   {
     category: "Game Engines & 3D",
     icon: Gamepad2,
-    skills: ["Unity", "C#", "Blender"]
+    skills: ["Unity", "C#", "Unreal Engine","UE Blueprints", "Blender"]
   },
   {
     category: "Full-Stack Web & Mobile",

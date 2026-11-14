@@ -9,8 +9,8 @@ export const PROFILE = {
   title: "Game Developer & Software Engineer",
   bio: "I build immersive games and scalable applications. From interactive gameplay mechanics to robust backends — I turn concepts into working products.",
   email: "chefaidriss@gmail.com.", // TODO: replace with your real contact email
-  avatar: "/public/content/images/professional img.jpeg",
-  resumeFile: "/public/content/resume/Idriss_s_Resume_2026.pdf",
+  avatar: "/content/images/professional_img.jpeg",
+  resumeFile: "/content/resume/Idriss_s_Resume_2026.pdf",
   resumeDownloadName: "Idriss_Chefai_Resume.pdf",
   location: "Tunis, Tunisia",
   availability: "Open to Opportunities",
