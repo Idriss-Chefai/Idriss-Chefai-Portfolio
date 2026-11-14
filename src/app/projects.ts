@@ -3,6 +3,125 @@ import { Project } from "./data-types";
 export const PROJECTS: Project[] = [
   // --- 2026: PINNED / RECENT HIGHLIGHTS (GAMES & HACKATHON) ---
   {
+    id: 21,
+    name: "Heist AI", // replace with your real title
+    cat: ["Games"],
+    role: "Pathfinding & AI Programmer (Team of 3)",
+    period: "2026", // confirm
+    highlights: [
+      "Real-time heist game in Unity on a tile grid, built as a team to compare three AI techniques in the same game: A*, an ad hoc FSM and Monte Carlo",
+      "Implemented the A* pathfinding from scratch, with terrain costs where mud makes the cheapest route differ from the shortest one",
+      "Built click-to-move for the player: a click plans an A* route, and a new click replans mid-walk",
+      "Built an automatic escape behavior using A* with a D* Lite-style approach, so the player replans its route to get away from enemies as they move",
+      "Shared architecture across the team: game state, enemy brain interface and rendering kept separate so each AI plugs into the same game"
+    ],
+    tech: ["C#", "Unity", "A*", "D* Lite", "Pathfinding", "Game AI"],
+    media: [
+      {
+        type: "image",
+        thumb: "/content/projects/HeistAI/1.png",
+        label: "A* Search Visualization"
+      }
+    ]
+  },
+    {
+    id: 20,
+    name: "Capture the Flag",
+    cat: ["Games"],
+    role: "Solo Developer (Unity Client & Backend)",
+    period: "2026", // confirm
+    highlights: [
+       "Designed and built alone an online two-player mobile game in Unity: each player collects three flags in the opponent's territory and brings them back to their base",
+      "Designed a symmetric multi-level arena with ladders, platforms, spike traps, rotating spiked hazards and enemies that make a player drop a carried flag",
+      "Implemented real-time multiplayer networking with Mirror",
+      "Built the backend on Strapi and PostgreSQL: account creation with email verification, login, password reset",
+      "Persistent win/loss tracking with win ratio for every player"
+    ],
+    tech: ["C#", "Unity", "Strapi", "PostgreSQL", "Multiplayer Networking"], // add Mirror or Netcode for GameObjects
+    media: [
+      {
+        type: "image",
+        thumb: "/content/projects/CaptureTheFlag/3.png",
+        label: "Arena Layout"
+      },
+      {
+        type: "image",
+        thumb: "/content/projects/CaptureTheFlag/1.png",
+        label: "Login Screen"
+      },
+      {
+        type: "image",
+        thumb: "/content/projects/CaptureTheFlag/2.png",
+        label: "Victory Screen"
+      }
+    ]
+  },
+    {
+    id: 19,
+    name: "Unified Particle Physics",
+    cat: ["Games"],
+    role: "Core Engine & Rigid Body Programmer (Team of 3)",
+    period: "2026",
+    highlights: [
+      "Team implementation in Unity of 'Unified Particle Physics for Real-Time Applications' (Macklin et al., NVIDIA Flex, SIGGRAPH 2014): rigid bodies, cloth and fluids as particles in a single simulation, with no Unity physics",
+      "Built the core engine: Position-Based Dynamics substepping loop, spatial hash grid collision detection, and an extensible IConstraint interface that let cloth and fluid modules plug in without merge conflicts",
+      "Implemented rigid bodies with shape matching, warm-started rotation extraction and surface-only particle collision",
+      "Added body sleeping so resting bodies act as static obstacles and wake on impact, a major performance gain",
+      "Cloth drapes over rigid bodies and blocks float or sink in water, all through the same collision system"
+    ],
+    tech: ["C#", "Unity", "Position-Based Dynamics", "Shape Matching", "Spatial Hashing", "Physics Simulation"],
+    media: [
+      {
+        type: "video",
+        thumb: "/content/projects/UnifiedPhysics/1.png",
+        label: "Simulation Demo",
+        embedUrl: "https://drive.google.com/file/d/1Vf0R-GOARBrrAtIiMGMdMLI78IuI5mr1/view?usp=sharing"
+      }
+    ]
+  },
+    {
+    id: 18,
+    name: "EventokenX",
+    cat: ["Games"],
+    role: "Gameplay & Mobile Developer (Intern)",
+    period: "2026",
+    highlights: [
+      "Hybrid mobile app merging real-world event discovery with RPG progression: characters, classes, skills, XP and combat",
+      "Optimized the main gameplay scene from ~399k to ~50k triangles and fixed a shared ScriptableObject bug that leaked scaled enemy XP across sessions",
+      "Replaced a switch-based skill system with an interface-based VFX pipeline covering projectiles, lob arcs, beams, persistent zones and melee slashes",
+      "Built a geolocated map using Web-Mercator projection, tile pooling, an 800-tile LRU cache, debounced prefetching and OSRM routing",
+      "Wired the Unity client to a Node.js/Firebase REST backend with JWT auth and session persistence"
+    ],
+    tech: ["C#", "Unity", "Node.js", "Express", "Firebase", "OpenStreetMap", "OSRM", "Postman"],
+    media: [
+            {
+        type: "image",
+        thumb: "/content/projects/EventokenX/NewCharacterCreationPanel.jpg",
+        label: "Character Creation Panel"
+      },
+      {
+        type: "image",
+        thumb: "/content/projects/EventokenX/Panel_Competence.jpg",
+        label: "Skill Panel"
+      },
+      {
+        type: "image",
+        thumb: "/content/projects/EventokenX/LoginPanel.jpg",
+        label: "Login Panel"
+      },
+      {
+        type: "image",
+        thumb: "/content/projects/EventokenX/SignUpPanel.jpg",
+        label: "Sign Up Panel"
+      },
+      {
+        type: "image",
+        thumb: "/content/projects/EventokenX/LowTris.png",
+        label: "Scene Screenshot (Optimized)"
+      }
+    ]
+  },
+  {
     id: 1,
     name: "VoidRunner",
     cat: ["Games"],
@@ -57,7 +176,56 @@ export const PROJECTS: Project[] = [
       "Done survival mechanics and advanced first player movement and synchronisation"
     ],
     tech: ["C#", "Unity", "Netcode for GameObjects", "Blender"],
-    media: []
+    media: [{
+        type: "video",
+        thumb: "/content/projects/TheReset/8.png",
+        label: "Gameplay Trailer",
+        embedUrl:"https://youtu.be/olb_UdaP3AA"
+      },{
+        type: "image",
+        thumb: "/content/projects/TheReset/1.png",
+        label: "Screenshot"
+      },
+    {
+        type: "image",
+        thumb: "/content/projects/TheReset/2.png",
+        label: "Screenshot"
+      },
+    {
+        type: "image",
+        thumb: "/content/projects/TheReset/3.png",
+        label: "Screenshot"
+      },
+    {
+        type: "image",
+        thumb: "/content/projects/TheReset/4.png",
+        label: "Screenshot"
+      },
+    {
+        type: "image",
+        thumb: "/content/projects/TheReset/5.png",
+        label: "Screenshot"
+      },
+    {
+        type: "image",
+        thumb: "/content/projects/TheReset/6.png",
+        label: "Screenshot"
+      },
+    {
+        type: "image",
+        thumb: "/content/projects/TheReset/7.png",
+        label: "Screenshot"
+      },
+    {
+        type: "image",
+        thumb: "/content/projects/TheReset/8.png",
+        label: "Screenshot"
+      },
+    {
+        type: "image",
+        thumb: "/content/projects/TheReset/9.png",
+        label: "Screenshot"
+      }]
   },
   {
     id: 4,
